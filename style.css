@@ -96,6 +96,7 @@ body {
 .contact {
     position: relative;
     background: transparent !important;
+    overflow: visible !important;
     isolation: isolate;
 }
 
