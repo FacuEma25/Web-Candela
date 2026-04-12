@@ -39,6 +39,22 @@
     --oscuro: #0f161c;
 }
 
+/* PARA CORREGIR DESBORDE EN CELULAR */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
+.opiniones,
+.opiniones .container,
+.opiniones-slider,
+.opiniones-track-wrapper {
+    max-width: 100%;
+}
+
 /*Auto scrol*/
 
 html {
@@ -80,7 +96,6 @@ body {
 .contact {
     position: relative;
     background: transparent !important;
-    overflow: visible !important;
     isolation: isolate;
 }
 
@@ -918,14 +933,15 @@ p {
 }
 
 .opiniones-slider {
+    position: relative;
     display: flex;
     align-items: center;
-    gap: 20px;
 }
 
 .opiniones-track-wrapper {
     overflow: hidden;
     width: 100%;
+    max-width: 100%;
     cursor: grab;
 }
 
@@ -1039,6 +1055,7 @@ p {
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
     transition: all 0.3s ease;
+    z-index: 3;
 }
 
 .slider-btn:hover {
@@ -1764,6 +1781,32 @@ p {
         font-size: 24px;
         bottom: 20px;
         right: 20px;
+    }
+
+    .opiniones-slider {
+        position: relative;
+    }
+
+    .opiniones-track-wrapper {
+        width: 100%;
+        max-width: 100%;
+        overflow: hidden;
+    }
+
+    .slider-btn {
+        position: absolute;
+        top: 50%;
+        transform: translateY(-50%);
+        width: 46px;
+        height: 46px;
+    }
+
+    .slider-btn.prev {
+        left: 8px;
+    }
+
+    .slider-btn.next {
+        right: 8px;
     }
 }
 
