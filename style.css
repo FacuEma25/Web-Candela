@@ -35,7 +35,7 @@
     --terciario: #000000;
     /*Usar muy poco*/
     --cuarto: #0e5ff4;
-    --claro: #fff;
+    --claro: #f0f0e7;
     --oscuro: #0f161c;
 }
 
@@ -78,7 +78,7 @@ body {
         radial-gradient(circle at 18% 72%, rgba(14, 95, 244, 0.16) 0%, rgba(14, 95, 244, 0.07) 18%, transparent 38%),
         linear-gradient(180deg, #041f56 0%, #0f161c 35%, #0f161c 100%); */
     background-color: var(--oscuro);
-    color: white;
+    color: var(--claro);
     overflow-x: hidden;
 }
 
@@ -141,7 +141,7 @@ img {
 .menu .navbar ul li a {
     font-size: 14px;
     padding: 10px 14px;
-    color: #fff;
+    color: #f0f0e7;
     display: block;
     transition: 0.3s;
 }
@@ -194,11 +194,11 @@ img {
     width: 50%;
 }
 
-.text-header h1 {
+/* .text-header h1 {
     font-size: 3.2rem;
-    color: #fff;
+    color: #f0f0e7;
     margin-bottom: 15px;
-}
+} */
 
 .text-tittle {
     color: rgba(255, 255, 255, 0.85);
@@ -214,7 +214,7 @@ img {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);
 
-    color: #fff;
+    color: #f0f0e7;
     font-size: 14px;
     text-decoration: none;
 
@@ -320,7 +320,7 @@ p {
     position: relative;
     z-index: 2;
     text-align: center;
-    color: #fff;
+    color: var(--claro);
     font-size: 2.8rem;
     margin-bottom: 60px;
     line-height: 1.1;
@@ -335,6 +335,23 @@ p {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 30px;
+}
+
+/* + adelante */
+.span-num.plus::before {
+    content: "+";
+    margin-right: 4px;
+}
+
+/* AÑOS después */
+.span-num.años::after {
+    content: " AÑOS";
+    margin-left: 6px;
+
+    font-size: inherit;
+    font-weight: inherit;
+    font-family: inherit;
+    letter-spacing: inherit;
 }
 
 .exp-items .items-1 {
@@ -361,7 +378,7 @@ p {
     font-size: 4.2rem;
     font-weight: 700;
     line-height: 1;
-    color: #fff;
+    color: var(--claro);
     margin-bottom: 16px;
 }
 
@@ -451,7 +468,7 @@ p {
 }
 
 .candela .cande-title {
-    color: #fff;
+    color: var(--claro);
     font-size: 2.8rem;
     line-height: 1.1;
     margin-bottom: 24px;
@@ -527,14 +544,14 @@ p {
 .candela .cande-icon i {
     position: relative;
     z-index: 2;
-    color: #ffffff;
+    color: #f0f0e7;
     font-size: 1.2rem;
     text-shadow: 0 4px 12px rgb(14, 94, 244);
 }
 
 .candela .cande-item p {
     margin: 0;
-    color: #fff;
+    color: var(--claro);
     font-size: 1rem;
     line-height: 1.5;
 }
@@ -591,7 +608,7 @@ p {
 
 .companias-2 .companias-header h2 {
     margin: 0;
-    color: #fff;
+    color: var(--claro);
     font-size: 2.3rem;
     text-transform: uppercase;
     text-align: center;
@@ -599,40 +616,39 @@ p {
     line-height: 1.2;
 }
 
-.companias-2 .companias-track-wrapper {
+.companias-2 .companias-grid {
     position: relative;
     z-index: 2;
     max-width: 1300px;
     margin: 0 auto;
-    overflow: hidden;
-}
 
-.companias-2 .companias-track {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
     gap: 34px 44px;
-    align-items: center;
+    align-items: stretch;
 }
 
-.logo-card {
-    min-height: 180px;
-    padding: 26px 30px;
+.companias-2 .logo-card {
+    min-height: 210px;
+    padding: 26px 24px 20px;
     border-radius: 28px;
 
     display: flex;
+    flex-direction: column;
     align-items: center;
     justify-content: center;
+    gap: 16px;
 
-    /* background: rgba(255, 255, 255, 0.05); */
-    border: 1px solid var(--cuarto);
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.08);
 
     backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
 }
 
-.companias-2 .logo-card:hover img {
-    transform: translateY(-6px) scale(1.02);
+/* .companias-2 .logo-card:hover img {
     box-shadow: 0 18px 40px rgba(8, 28, 78, 0.24);
-}
+} */
 
 .companias-2 .logo-card:active {
     transform: translateY(-2px) scale(0.99);
@@ -648,46 +664,110 @@ p {
     transition: transform 0.3s ease;
 }
 
-.companias-2 .logo-card:hover img {
-    transform: scale(1.04);
+.companias-2 .logo-link {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 110px;
+    text-decoration: none;
 }
 
-.companias-2 .companias-track-wrapper.dragging {
-    cursor: grabbing;
+.logo-link {
+    width: 100%;
+    height: 110px;
+    /* área fija para todos */
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
-.logo-btn {
-    position: absolute;
-    top: 50%;
-    transform: translateY(-50%);
+.logo-link img {
+    width: 100%;
+    height: 100%;
 
-    width: 46px;
-    height: 46px;
-    border-radius: 50%;
+    object-fit: contain;
 
-    display: none;
-    /* solo mobile */
+    max-width: 160px;
+    max-height: 80px;
 
+    transition: none;
+    cursor: pointer;
+}
+
+.logo-link img {
+    transform: scale(0.9);
+}
+
+.logo-card:nth-child(1) img {
+    transform: scale(1.2);
+}
+
+.logo-card:nth-child(2) img {
+    transform: scale(1.2);
+}
+
+.logo-card:nth-child(3) img {
+    transform: scale(0.85);
+}
+
+.logo-card:nth-child(4) img {
+    transform: scale(1.2);
+}
+
+.logo-card:nth-child(5) img {
+    transform: scale(0.9);
+}
+
+.logo-card:nth-child(6) img {
+    transform: scale(1.4);
+}
+
+.logo-card:nth-child(7) img {
+    transform: scale(0.8);
+}
+
+.logo-card:nth-child(8) img {
+    transform: scale(1.5);
+}
+
+.logo-card:nth-child(9) img {
+    transform: scale(1.2);
+}
+
+.logo-rubro {
+    margin: 0;
+
+    display: inline-flex;
     align-items: center;
     justify-content: center;
 
-    border: 1px solid rgba(255, 255, 255, 0.15);
-    background: rgba(255, 255, 255, 0.08);
-    color: #fff;
+    padding: 6px 14px;
+    border-radius: 999px;
 
-    backdrop-filter: blur(8px);
+    font-size: 0.8rem;
+    font-weight: 500;
+    letter-spacing: 0.5px;
+
+    color: rgba(255, 255, 255, 0.85);
+
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.12);
+
+    backdrop-filter: blur(6px);
+    -webkit-backdrop-filter: blur(6px);
+
+    transition: none;
     cursor: pointer;
-    z-index: 3;
-
-    transition: 0.3s;
 }
 
-.logo-btn.prev {
-    left: 10px;
-}
+.logo-card:hover {
+    background: rgba(14, 95, 244, 0.15);
+    border-color: rgba(14, 95, 244, 0.4);
+    box-shadow: 0 0 12px rgba(14, 95, 244, 0.2);
 
-.logo-btn.next {
-    right: 10px;
+    border: 1px solid var(--cuarto);
+    transition: all 0.3s ease;
 }
 
 .logo-btn:hover {
@@ -804,7 +884,7 @@ p {
     text-align: center;
     font-size: 3rem;
     margin-bottom: 80px;
-    color: #fff;
+    color: var(--claro);
 }
 
 /* GRID DESKTOP */
@@ -868,7 +948,7 @@ p {
     font-size: 1.1rem;
     font-weight: 500;
     line-height: 1.5;
-    color: #fff;
+    color: var(--claro);
     margin-bottom: 10px;
 }
 
@@ -878,7 +958,7 @@ p {
     border-radius: 999px;
     font-size: 0.85rem;
     font-weight: 500;
-    color: #fff;
+    color: var(--claro);
 
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.12);
@@ -928,7 +1008,7 @@ p {
 .opiniones .titulo {
     margin-bottom: 70px;
     text-align: center;
-    color: #fff;
+    color: var(--claro);
     font-size: 3rem;
     line-height: 1.1;
 }
@@ -1024,7 +1104,7 @@ p {
 
 .opinion-info h3 {
     margin: 0 0 10px;
-    color: #fff;
+    color: var(--claro);
     font-size: 1.18rem;
     font-weight: 600;
     line-height: 1.2;
@@ -1051,7 +1131,7 @@ p {
     border: 1px solid rgba(255, 255, 255, 0.14);
     border-radius: 50%;
     background: rgba(255, 255, 255, 0.07);
-    color: #fff;
+    color: var(--claro);
     cursor: pointer;
     backdrop-filter: blur(8px);
     -webkit-backdrop-filter: blur(8px);
@@ -1176,7 +1256,7 @@ p {
     position: relative;
     z-index: 2;
     margin: 0 0 22px;
-    color: #fff;
+    color: var(--claro);
     font-size: 2rem;
     line-height: 1.1;
 }
@@ -1185,7 +1265,7 @@ p {
     position: relative;
     z-index: 2;
     display: inline-block;
-    color: #fff;
+    color: var(--claro);
     text-decoration: none;
     font-size: 1.15rem;
     font-weight: 500;
@@ -1227,7 +1307,7 @@ p {
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.12);
 
-    color: #fff;
+    color: var(--claro);
     font-size: 1.35rem;
     text-decoration: none;
 
@@ -1242,7 +1322,7 @@ p {
     background: rgba(14, 95, 244, 0.18);
     border-color: rgba(14, 95, 244, 0.45);
     box-shadow: 0 0 18px rgba(14, 95, 244, 0.28);
-    color: #ffffff;
+    color: #f0f0e7;
 }
 
 /* FIN - CONTACTO */
@@ -1304,7 +1384,7 @@ p {
 
 .footer-top h3 {
     margin: 0 0 16px;
-    color: #fff;
+    color: var(--claro);
     font-size: 2rem;
     line-height: 1.1;
 }
@@ -1324,7 +1404,7 @@ p {
     padding: 12px 22px;
     border-radius: 999px;
     text-decoration: none;
-    color: #fff;
+    color: var(--claro);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);
     backdrop-filter: blur(8px);
@@ -1380,7 +1460,7 @@ p {
     justify-content: center;
 
     background: #25D366;
-    color: #fff;
+    color: var(--claro);
 
     font-size: 28px;
     text-decoration: none;
@@ -1435,6 +1515,11 @@ p {
 /* ========================= */
 
 @media (max-width: 1280px) {
+    .text-header-1 img {
+        width: 100%;
+        max-width: 480px;
+    }
+
     .servicios .container {
         max-width: 1100px;
     }
@@ -1458,10 +1543,6 @@ p {
         width: 100%;
     }
 
-    .text-header h1 {
-        font-size: 2.5rem;
-    }
-
     .exp-items .exp-grid {
         max-width: 1100px;
         gap: 24px;
@@ -1479,12 +1560,12 @@ p {
         font-size: 2.1rem;
     }
 
-    .companias-2 .companias-track {
-        gap: 28px 28px;
+    .companias-2 .companias-grid {
+        gap: 28px;
     }
 
     .companias-2 .logo-card {
-        min-height: 165px;
+        min-height: 195px;
     }
 
 }
@@ -1558,8 +1639,22 @@ p {
         font-size: 1.9rem;
     }
 
-    .companias-2 .companias-track {
-        grid-template-columns: repeat(2, 1fr);
+    .companias-2 .companias-grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 22px;
+    }
+
+    .companias-2 .logo-card {
+        min-height: 185px;
+        padding: 22px 18px 18px;
+    }
+
+    .companias-2 .logo-link img {
+        max-height: 78px;
+    }
+
+    .companias-2 .logo-rubro {
+        font-size: 0.9rem;
     }
 
     .contact {
@@ -1572,6 +1667,11 @@ p {
 }
 
 @media (max-width: 768px) {
+    .text-header-1 img {
+        width: 100%;
+        max-width: 380px;
+    }
+
     .servicios {
         padding: 80px 25px;
     }
@@ -1704,34 +1804,36 @@ p {
         max-width: 120px;
     }
 
-    .companias-2 .companias-track {
-        display: flex;
+    .companias-2 .companias-grid {
+        grid-template-columns: repeat(2, 1fr);
         gap: 18px;
-        transition: transform 0.45s ease;
-        will-change: transform;
     }
 
     .companias-2 .logo-card {
-        flex: 0 0 calc(100% - 10px);
-        min-height: 150px;
-        padding: 24px 20px;
+        min-height: 170px;
         border-radius: 24px;
+        padding: 20px 16px 16px;
     }
 
-    .companias-2 .logo-card img {
-        max-height: 82px;
+    .companias-2 .logo-link {
+        min-height: 86px;
     }
 
-    .companias-2 .companias-track-wrapper {
-        cursor: grab;
+    .companias-2 .logo-link img {
+        max-height: 64px;
     }
 
-    .companias-2 .companias-track,
+    .logo-rubro {
+        font-size: 0.75rem;
+        padding: 5px 12px;
+    }
+
+    /* .companias-2 .companias-track,
     .companias-2 .logo-card,
     .companias-2 .logo-card img {
         user-select: none;
         -webkit-user-drag: none;
-    }
+    } */
 
     .logo-btn {
         display: flex;
@@ -1808,6 +1910,36 @@ p {
 
     .slider-btn.next {
         right: 8px;
+    }
+
+    .companias-2 {
+        padding: 70px 20px;
+    }
+
+    .companias-2 .companias-header h2 {
+        font-size: 1.35rem;
+    }
+
+    .companias-2 .companias-header span {
+        max-width: 70px;
+    }
+
+    .companias-2 .companias-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 14px;
+    }
+
+    .companias-2 .logo-card {
+        min-height: 155px;
+        padding: 18px 14px 14px;
+    }
+
+    .companias-2 .logo-link img {
+        max-height: 56px;
+    }
+
+    .companias-2 .logo-rubro {
+        font-size: 0.82rem;
     }
 }
 
@@ -1981,12 +2113,35 @@ p {
     }
 
     .companias-2 .logo-card {
-        min-height: 130px;
-        padding: 20px 18px;
+        min-height: 145px;
     }
 
-    .companias-2 .logo-card img {
-        max-height: 72px;
+    .companias-2 .logo-link img {
+        max-height: 50px;
+    }
+
+    .logo-rubro {
+        font-size: 0.7rem;
+        padding: 4px 10px;
+    }
+}
+
+@media (max-width: 360px) {
+    .companias-2 .companias-header h2 {
+        font-size: 1.2rem;
+    }
+
+    .companias-2 .logo-card {
+        min-height: 136px;
+        padding: 16px 12px 12px;
+    }
+
+    .companias-2 .logo-link img {
+        max-height: 44px;
+    }
+
+    .companias-2 .logo-rubro {
+        font-size: 0.74rem;
     }
 
     .contact .contact-card h2 {
