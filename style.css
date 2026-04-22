@@ -394,12 +394,15 @@ p {
     position: relative;
     display: flex;
     align-items: center;
-    justify-content: space-between;
-    gap: 50px;
+    justify-content: center;
+    gap: 70px;
 
-    padding: 120px 200px;
-    background: #0f161c;
-    overflow: hidden;
+    max-width: 1280px;
+    margin: 0 auto;
+    padding: 120px 40px;
+
+    background: transparent;
+    overflow: visible;
 }
 
 .candela::before {
@@ -429,7 +432,7 @@ p {
 }
 
 .candela .cande-img {
-    width: 45%;
+    flex: 0 0 55%;
     display: flex;
     justify-content: center;
     align-items: flex-end;
@@ -437,7 +440,8 @@ p {
 
 .candela .cande-img img {
     width: 100%;
-    max-width: 460px;
+    max-width: 650px;
+    transform: scale(1.1);
     display: block;
     position: relative;
     z-index: 2;
@@ -463,8 +467,8 @@ p {
 }
 
 .candela .cande-text {
-    width: 55%;
-    max-width: 700px;
+    flex: 0 0 42%;
+    max-width: 620px;
 }
 
 .candela .cande-title {
@@ -492,8 +496,8 @@ p {
     align-items: center;
     gap: 16px;
 
-    padding: 18px 22px;
-    border-radius: 20px;
+    padding: 14px 18px;
+    border-radius: 16px;
 
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.10);
@@ -552,7 +556,7 @@ p {
 .candela .cande-item p {
     margin: 0;
     color: var(--claro);
-    font-size: 1rem;
+    font-size: 0.92rem;
     line-height: 1.5;
 }
 
@@ -958,6 +962,19 @@ p {
     box-shadow: 0 0 20px rgba(14, 95, 244, 0.25);
     transform: translateY(-2px);
 }
+
+.card .icono img {
+    transform: scale(var(--img-scale, 1));
+    transition: transform 0.3s ease;
+}
+
+/* MODIFICAR A MANO LAS CARDS */
+.card:nth-child(1) { --img-scale: 1; }
+.card:nth-child(2) { --img-scale: 2.5; }
+.card:nth-child(3) { --img-scale: 1; }
+.card:nth-child(4) { --img-scale: 1; }
+.card:nth-child(5) { --img-scale: 1; }
+.card:nth-child(6) { --img-scale: 1; }
 
 /* OPINIONES */
 .opiniones {
@@ -1593,16 +1610,21 @@ p {
     }
 
     .candela {
-        gap: 30px;
+        gap: 40px;
         padding: 100px 32px;
     }
 
     .candela .cande-img {
-        width: 42%;
+        flex: 0 0 44%;
     }
 
     .candela .cande-text {
-        width: 58%;
+        flex: 0 0 48%;
+        max-width: 560px;
+    }
+
+    .candela .cande-img img {
+        max-width: 470px;
     }
 
     .candela .cande-title {
@@ -1737,11 +1759,13 @@ p {
     .candela {
         flex-direction: column;
         text-align: center;
+        gap: 34px;
         padding: 80px 24px;
     }
 
     .candela .cande-img,
     .candela .cande-text {
+        flex: none;
         width: 100%;
         max-width: 100%;
     }
@@ -1755,7 +1779,8 @@ p {
     }
 
     .candela .cande-img img {
-        max-width: 340px;
+        max-width: 360px;
+
     }
 
     .candela .cande-title {
