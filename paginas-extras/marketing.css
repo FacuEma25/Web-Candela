@@ -79,6 +79,7 @@ body::before {
 }
 
 .servicio-redes-page,
+.hero-divider,
 .planes-section,
 .planes-tabla-section,
 .forma-trabajo-section,
@@ -381,6 +382,9 @@ body::before {
 
 .marketing-hero.hero-folds {
     position: relative;
+    position: relative;
+    z-index: 1;
+    margin-bottom: 0;
     min-height: 100vh;
     padding: 150px 40px 110px;
 
@@ -390,7 +394,10 @@ body::before {
 
     overflow: hidden;
 
-    background: #052868;
+    background:
+        radial-gradient(circle at 50% 18%, rgba(14, 95, 244, 0.16) 0%, rgba(14, 95, 244, 0.06) 32%, transparent 58%),
+        radial-gradient(circle at 50% 58%, rgba(14, 95, 244, 0.10) 0%, transparent 46%),
+        var(--oscuro);
     /* azul oscuro base de la web */
 }
 
@@ -418,17 +425,6 @@ body::before {
         radial-gradient(ellipse at center, transparent 0%, transparent 42%, rgba(0, 0, 0, 0.46) 100%),
         linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, transparent 24%, rgba(0, 0, 0, 0.42) 100%);
 }
-
-/* MAS CLARO */
-/* .hero-folds-vignette {
-    position: absolute;
-    inset: 0;
-    z-index: 3;
-    pointer-events: none;
-
-    background:
-        radial-gradient(ellipse at center, transparent 0%, transparent 48%, rgba(0, 0, 0, 0.22) 100%);
-} */
 
 /* Contenido */
 .marketing-hero-container {
@@ -522,6 +518,63 @@ body::before {
     background: rgba(14, 95, 244, 0.18);
     border-color: rgba(14, 95, 244, 0.4);
     box-shadow: 0 0 24px rgba(14, 95, 244, 0.18);
+}
+
+/* HERO DIVIDER */
+
+.hero-divider {
+    position: relative;
+    height: 320px;
+    margin-top: -180px;
+    margin-bottom: -80px;
+    background: transparent !important;
+    overflow: visible !important;
+    isolation: isolate;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.hero-divider::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at left center,
+            rgba(4, 54, 146, 0.95) 0%,
+            rgba(8, 57, 148, 0.65) 18%,
+            rgba(14, 95, 244, 0.22) 34%,
+            transparent 58%),
+        radial-gradient(ellipse at right center,
+            rgba(0, 89, 255, 0.95) 0%,
+            rgba(14, 95, 244, 0.65) 18%,
+            rgba(14, 95, 244, 0.22) 34%,
+            transparent 58%),
+        linear-gradient(to bottom,
+            transparent 0%,
+            rgba(15, 22, 28, 0.35) 45%,
+            transparent 100%);
+    filter: blur(36px);
+    transform: scale(1.15);
+    pointer-events: none;
+}
+
+.hero-divider::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 70%;
+    height: 36px;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(14, 95, 244, 0.25) 18%,
+            rgba(145, 205, 255, 0.55) 50%,
+            rgba(14, 95, 244, 0.25) 82%,
+            transparent 100%);
+    filter: blur(26px);
+    opacity: 0.75;
+    pointer-events: none;
 }
 
 /* =========================
@@ -1361,6 +1414,26 @@ body::before {
 }
 
 
+/* CORRIGE EL PROBLEMA DE POSICIONAMIENTO */
+html,
+body {
+    margin: 0;
+    padding: 0;
+}
+
+.servicio-redes-page {
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+}
+
+.footer {
+    margin-bottom: 0 !important;
+    padding-bottom: 30px;
+}
+
+.footer::after {
+    bottom: 0;
+}
 
 /* RESPONSIVE */
 @media (max-width: 1280px) {
