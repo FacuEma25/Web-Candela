@@ -1470,7 +1470,7 @@ body::before {
         line-height: 1.72;
     }
 
-    .marketing-hero.hero-neurom {
+        .marketing-hero.hero-neurom {
         min-height: 88vh;
         padding: 130px 24px 90px;
     }
@@ -1650,7 +1650,7 @@ body::before {
         padding: 112px 20px 52px;
     }
 
-    .marketing-hero.hero-neurom {
+        .marketing-hero.hero-neurom {
         min-height: 82vh;
         padding: 118px 20px 76px;
     }
