@@ -55,29 +55,40 @@ html {
 
 html,
 body {
-    width: 100%;
-    max-width: 100%;
-    overflow-x: hidden;
+    min-height: 100%;
 }
 
 body {
     position: relative;
-    background-color: var(--oscuro);
     color: var(--claro);
     overflow-x: hidden;
+    background: var(--oscuro);
 }
 
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -2;
+    z-index: -10;
     pointer-events: none;
+
     background:
-        radial-gradient(circle at 12% 18%, rgba(14, 95, 244, 0.18) 0%, rgba(14, 95, 244, 0.08) 20%, transparent 42%),
-        radial-gradient(circle at 88% 30%, rgba(14, 95, 244, 0.16) 0%, rgba(14, 95, 244, 0.07) 18%, transparent 40%),
-        radial-gradient(circle at 18% 72%, rgba(14, 95, 244, 0.14) 0%, rgba(14, 95, 244, 0.06) 18%, transparent 38%),
-        linear-gradient(180deg, #04111d 0%, #071829 42%, #0a2351 100%);
+        radial-gradient(circle at 10% 20%, rgba(14, 95, 244, 0.12), transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(14, 95, 244, 0.10), transparent 45%),
+        radial-gradient(circle at 20% 75%, rgba(14, 95, 244, 0.08), transparent 40%);
+}
+
+.servicio-redes-page,
+.planes-section,
+.planes-tabla-section,
+.forma-trabajo-section,
+.cta-lugares-section,
+.contact,
+.footer {
+    position: relative;
+    background: transparent !important;
+    overflow: visible !important;
+    isolation: isolate;
 }
 
 .inicio {
@@ -91,6 +102,17 @@ body::before {
 .opiniones-slider,
 .opiniones-track-wrapper {
     max-width: 100%;
+}
+
+.planes-section,
+.planes-tabla-section,
+.forma-trabajo-section,
+.cta-lugares-section,
+.contact,
+.footer {
+    position: relative;
+    overflow: hidden;
+    background: #0f161c;
 }
 
 .menu {
@@ -152,7 +174,7 @@ body::before {
 .contact {
     position: relative;
     padding: 120px 40px;
-    background: transparent;
+    background: #0f161c;
     overflow: hidden;
 }
 
@@ -162,7 +184,6 @@ body::before {
     top: 50%;
     right: -18vw;
     transform: translateY(-50%);
-
     width: 520px;
     height: 520px;
 
@@ -174,6 +195,20 @@ body::before {
     filter: blur(120px);
     z-index: 1;
     pointer-events: none;
+}
+
+.contact::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -180px;
+    transform: translateY(-50%);
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(0, 89, 255, 0.5) 0%, rgba(14, 94, 244, 0.3) 35%, rgba(14, 95, 244, 0) 72%);
+    filter: blur(110px);
+    pointer-events: none;
+    z-index: 1;
 }
 
 .contact .contact-container {
@@ -355,7 +390,8 @@ body::before {
 
     overflow: hidden;
 
-    background: #052868; /* azul oscuro base de la web */
+    background: #052868;
+    /* azul oscuro base de la web */
 }
 
 /* Glow general detrás del texto */
@@ -366,10 +402,9 @@ body::before {
     pointer-events: none;
 
     background:
-        radial-gradient(circle at 24% 50%, rgba(35, 122, 255, 0.38) 0%, rgba(35, 122, 255, 0.14) 18%, transparent 42%),
-        radial-gradient(circle at 76% 52%, rgba(71, 173, 255, 0.26) 0%, rgba(71, 173, 255, 0.10) 18%, transparent 42%),
-        radial-gradient(circle at 50% 40%, rgba(95, 170, 255, 0.18) 0%, transparent 34%),
-        linear-gradient(180deg, rgba(2, 7, 18, 0.25) 0%, rgba(2, 7, 18, 0.1) 50%, rgba(2, 7, 18, 0.45) 100%);
+        radial-gradient(circle at 24% 50%, rgba(35, 122, 255, 0.32) 0%, rgba(35, 122, 255, 0.12) 18%, transparent 42%),
+        radial-gradient(circle at 76% 52%, rgba(71, 173, 255, 0.22) 0%, rgba(71, 173, 255, 0.08) 18%, transparent 42%),
+        radial-gradient(circle at 50% 40%, rgba(95, 170, 255, 0.14) 0%, transparent 34%);
 }
 
 /* Oscurece bordes y funde con el resto */
@@ -383,6 +418,17 @@ body::before {
         radial-gradient(ellipse at center, transparent 0%, transparent 42%, rgba(0, 0, 0, 0.46) 100%),
         linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, transparent 24%, rgba(0, 0, 0, 0.42) 100%);
 }
+
+/* MAS CLARO */
+/* .hero-folds-vignette {
+    position: absolute;
+    inset: 0;
+    z-index: 3;
+    pointer-events: none;
+
+    background:
+        radial-gradient(ellipse at center, transparent 0%, transparent 48%, rgba(0, 0, 0, 0.22) 100%);
+} */
 
 /* Contenido */
 .marketing-hero-container {
@@ -478,21 +524,35 @@ body::before {
     box-shadow: 0 0 24px rgba(14, 95, 244, 0.18);
 }
 
-/* ACA EL CODIGO */
-
-
-
-
-
-
-
-
-
 /* =========================
    PLANES CARDS
 ========================= */
 .planes-section {
-    padding: 00px 40px 80px;
+    position: relative;
+    padding-top: 120px;
+
+    background:
+        radial-gradient(circle at 50% 0%,
+            rgba(14, 95, 244, 0.15),
+            transparent 60%),
+        linear-gradient(to bottom,
+            rgba(5, 40, 104, 0) 0%,
+            rgba(5, 40, 104, 0.7) 30%,
+            #052868 70%);
+}
+
+.planes-section::after {
+    content: "";
+    position: absolute;
+    top: 38%;
+    left: -180px;
+    transform: translateY(-50%);
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(0, 89, 255, 0.55) 0%, rgba(14, 94, 244, 0.32) 35%, rgba(14, 95, 244, 0) 72%);
+    filter: blur(110px);
+    pointer-events: none;
+    z-index: 1;
 }
 
 .planes-container {
@@ -590,6 +650,20 @@ body::before {
 ========================= */
 .planes-tabla-section {
     padding: 40px 40px 90px;
+}
+
+.planes-tabla-section::after {
+    content: "";
+    position: absolute;
+    top: 50%;
+    right: -220px;
+    transform: translateY(-50%);
+    width: 560px;
+    height: 560px;
+    background: radial-gradient(circle, rgba(0, 89, 255, 0.45) 0%, rgba(14, 94, 244, 0.24) 38%, rgba(14, 95, 244, 0) 72%);
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 1;
 }
 
 .planes-tabla-container {
@@ -853,13 +927,25 @@ body::before {
     padding: 60px 40px;
 }
 
+.forma-trabajo-section::after {
+    content: "";
+    position: absolute;
+    top: 42%;
+    left: -180px;
+    transform: translateY(-50%);
+    width: 620px;
+    height: 620px;
+    background: radial-gradient(circle, rgba(0, 89, 255, 0.5) 0%, rgba(14, 94, 244, 0.28) 35%, rgba(14, 95, 244, 0) 72%);
+    filter: blur(120px);
+    pointer-events: none;
+    z-index: 1;
+}
+
 .forma-trabajo-bg {
     position: absolute;
     inset: 0;
     pointer-events: none;
-    background:
-        radial-gradient(circle at 15% 30%, rgba(14, 95, 244, 0.13) 0%, rgba(14, 95, 244, 0) 24%),
-        radial-gradient(circle at 82% 66%, rgba(14, 95, 244, 0.12) 0%, rgba(14, 95, 244, 0) 28%);
+    background: transparent;
 }
 
 .forma-trabajo-container {
@@ -1041,6 +1127,20 @@ body::before {
     padding: 40px 40px 130px;
 }
 
+.cta-lugares-section::after {
+    content: "";
+    position: absolute;
+    top: 45%;
+    right: -180px;
+    transform: translateY(-50%);
+    width: 520px;
+    height: 520px;
+    background: radial-gradient(circle, rgba(0, 89, 255, 0.42) 0%, rgba(14, 94, 244, 0.24) 38%, rgba(14, 95, 244, 0) 72%);
+    filter: blur(110px);
+    pointer-events: none;
+    z-index: 1;
+}
+
 .cta-lugares-container {
     max-width: 1100px;
     margin: 0 auto;
@@ -1120,6 +1220,19 @@ body::before {
     pointer-events: none;
     z-index: 1;
 }
+
+/* .footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(5, 40, 104, 0) 0%,
+            rgba(5, 40, 104, 0.45) 30%,
+            rgba(5, 40, 104, 0.75) 60%,
+            rgba(5, 40, 104, 0.96) 100%);
+    pointer-events: none;
+    z-index: 1;
+} */
 
 .footer::after {
     content: "";
@@ -1235,6 +1348,18 @@ body::before {
     transform: scale(1.1);
     box-shadow: 0 0 25px rgba(37, 211, 102, 0.6);
 }
+
+.planes-container,
+.planes-tabla-container,
+.forma-trabajo-container,
+.cta-lugares-container,
+.contact-container,
+.footer-top,
+.footer-bottom {
+    position: relative;
+    z-index: 2;
+}
+
 
 
 /* RESPONSIVE */
@@ -1564,7 +1689,7 @@ body::before {
         padding: 112px 20px 52px;
     }
 
-        .marketing-hero.hero-neurom {
+    .marketing-hero.hero-neurom {
         min-height: 82vh;
         padding: 118px 20px 76px;
     }
