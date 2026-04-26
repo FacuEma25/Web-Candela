@@ -39,6 +39,12 @@
     --oscuro: #0f161c;
 }
 
+/* Spans */
+.highlight{
+    color: var(--cuarto);
+}
+
+
 /* PARA CORREGIR DESBORDE EN CELULAR */
 
 html,

@@ -61,6 +61,15 @@ img {
     overflow-x: hidden;
 }
 
+.planes-section,
+.planes-tabla-section,
+.forma-trabajo-section,
+.cta-lugares-section,
+.contact,
+.footer {
+    max-width: 100%;
+}
+
 /* PARA CORREGIR DESBORDE EN CELULAR */
 
 html,
