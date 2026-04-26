@@ -40,10 +40,9 @@
 }
 
 /* Spans */
-.highlight{
-    color: var(--cuarto);
-}
-
+/* .highlight {
+    color: var(--cuarto) !important;
+} */
 
 /* PARA CORREGIR DESBORDE EN CELULAR */
 

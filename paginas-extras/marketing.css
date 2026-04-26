@@ -196,7 +196,7 @@ body::before {
 /* INICIO CONTACTO */
 .contact {
     position: relative;
-    padding: 120px 40px;
+    padding: px 40px;
     background: #0f161c;
     overflow: hidden;
 }
@@ -417,10 +417,16 @@ body::before {
     overflow: hidden;
 
     background:
-        radial-gradient(circle at 50% 18%, rgba(14, 95, 244, 0.16) 0%, rgba(14, 95, 244, 0.06) 32%, transparent 58%),
-        radial-gradient(circle at 50% 58%, rgba(14, 95, 244, 0.10) 0%, transparent 46%),
+        radial-gradient(circle at 50% 18%, rgba(14, 94, 244, 0.384) 0%, rgba(14, 140, 244, 0.267) 32%, transparent 58%),
+        radial-gradient(circle at 50% 58%, rgba(14, 94, 244, 0.527) 0%, transparent 46%),
         var(--oscuro);
     /* azul oscuro base de la web */
+
+    /* DEGRADADO ORIGINAL */
+    /* background:
+        radial-gradient(circle at 50% 18%, rgba(14, 95, 244, 0.16) 0%, rgba(14, 95, 244, 0.06) 32%, transparent 58%),
+        radial-gradient(circle at 50% 58%, rgba(14, 95, 244, 0.10) 0%, transparent 46%),
+        var(--oscuro); */
 }
 
 /* Glow general detrás del texto */
@@ -1199,7 +1205,7 @@ body::before {
    CTA FINAL
 ========================= */
 .cta-lugares-section {
-    padding: 40px 40px 130px;
+    padding: 40px 40px;
 }
 
 .cta-lugares-section::after {
