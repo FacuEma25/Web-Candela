@@ -1716,6 +1716,57 @@ body {
         font-size: 0.9rem;
     }
 
+    /* SOLUCION DEGRADADO FUERA EN VERSION MOBIL */
+    html,
+    body {
+        width: 100%;
+        max-width: 100%;
+        overflow-x: hidden !important;
+    }
+
+    .servicio-redes-page {
+        width: 100%;
+        max-width: 100vw;
+        overflow-x: clip !important;
+        overflow-y: visible !important;
+    }
+
+    .hero-divider,
+    .planes-section,
+    .planes-tabla-section,
+    .forma-trabajo-section,
+    .cta-lugares-section,
+    .contact,
+    .footer {
+        max-width: 100vw;
+        overflow-x: clip !important;
+        overflow-y: visible !important;
+    }
+
+    .contact::before,
+    .footer::after,
+    .planes-section::before,
+    .planes-section::after,
+    .planes-tabla-section::before,
+    .planes-tabla-section::after,
+    .forma-trabajo-section::before,
+    .forma-trabajo-section::after,
+    .cta-lugares-section::before,
+    .cta-lugares-section::after {
+        max-width: 100vw;
+        left: 50% !important;
+        right: auto !important;
+        transform: translateX(-50%) !important;
+    }
+
+    .contact::before,
+    .footer::after {
+        width: 420px;
+        height: 420px;
+        filter: blur(95px);
+        opacity: 0.85;
+    }
+
 }
 
 @media (max-width: 600px) {
