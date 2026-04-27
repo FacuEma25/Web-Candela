@@ -13,8 +13,8 @@
 <body>
     <header class="inicio" id="inicio">
         <div class="menu">
-            <a href="index.html">
-                <img class="img-logo" src="/img/Candela-logo-barra.png" alt="Candela Canavesi">
+            <a href="../index.html">
+                <img class="img-logo" src="img/Candela-logo-barra.png" alt="Candela Canavesi">
             </a>
 
             <input type="checkbox" id="menu">
@@ -26,36 +26,41 @@
             <nav class="navbar">
                 <ul>
                     <li><a href="#inicio">Inicio</a></li>
-                    <li><a href="#experiencia">Experiencia</a></li>
-                    <li><a href="#sobremi">Sobre mi</a></li>
-                    <li><a href="#empresas">Empresas</a></li>
-                    <li><a href="#servicios">Servicios</a></li>
-                    <li><a href="#opiniones">Opiniones</a></li>
+                    <li><a href="#propuesta">Propuesta</a></li>
+                    <li><a href="#negocios">Negocios</a></li>
                     <li><a href="#contact">Contacto</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
-    <main class="intervencion-page">
+    <main class="marca-page">
 
         <!-- HERO -->
-        <section class="intervencion-hero" id="inicio">
-            <div class="intervencion-hero-bg"></div>
+        <section class="service-hero hero-folds" id="inicio">
+            <div class="hero-folds-light"></div>
+            <div class="hero-folds-vignette"></div>
 
-            <div class="intervencion-hero-content">
-                <span class="section-kicker">Servicio</span>
+            <div class="service-hero-container">
+                <div class="service-hero-text">
+                    <span class="section-kicker">Servicio</span>
 
-                <h1>Intervención comercial y de posicionamiento de marca</h1>
+                    <h1>Intervención comercial y de posicionamiento de marca</h1>
 
-                <p>
-                    Pasá a la acción con un mes de acompañamiento donde potenciaremos
-                    tu marca para llevarla al próximo nivel.
-                </p>
+                    <p>
+                        Pasá a la acción con un mes de acompañamiento donde potenciaremos
+                        tu marca para llevarla al próximo nivel.
+                    </p>
 
-                <a href="#propuesta" class="hero-btn">Ver propuesta</a>
+                    <div class="hero-actions">
+                        <a href="#propuesta" class="hero-btn primary">Ver propuesta</a>
+                        <a href="#contact" class="hero-btn secondary">Consultar</a>
+                    </div>
+                </div>
             </div>
         </section>
+
+        <div class="hero-divider"></div>
 
         <!-- PROPUESTA -->
         <section class="intervencion-propuesta" id="propuesta">
@@ -82,13 +87,13 @@
                 </div>
 
                 <div class="propuesta-img">
-                    <img src="img/marca-items.png" alt="Asesoría estratégica de marca">
+                    <img src="img/marca-items.png" alt="Intervención comercial y posicionamiento de marca">
                 </div>
 
             </div>
         </section>
 
-        <!-- NEGOCIOS ACOMPAÑADOS -->
+        <!-- NEGOCIOS -->
         <section class="negocios-section" id="negocios">
             <div class="negocios-container">
 
@@ -103,15 +108,15 @@
                     </article>
 
                     <article class="negocio-card">
-                        <img src="img/marca-capturas (2).png" alt="Córdoba Drinks">
+                        <img src="img/marca-capturas (2).png" alt="Mi Casa Mi Lugar">
                     </article>
 
                     <article class="negocio-card">
-                        <img src="img/marca-capturas (3).png" alt="Córdoba Drinks">
+                        <img src="img/marca-capturas (3).png" alt="Veronesi Tech">
                     </article>
 
                     <article class="negocio-card">
-                        <img src="img/marca-capturas (4).png" alt="Córdoba Drinks">
+                        <img src="img/marca-capturas (4).png" alt="Black Lion">
                     </article>
                 </div>
 
@@ -120,6 +125,7 @@
 
     </main>
 
+    <!-- CONTACTO -->
     <section class="contact" id="contact">
         <div class="contact-container">
 
@@ -165,7 +171,7 @@
         </div>
     </footer>
 
-    script src="marca.js"></script>
+    <script src="marca.js"></script>
 </body>
 
 </html>
