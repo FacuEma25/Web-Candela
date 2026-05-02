@@ -68,6 +68,14 @@ body {
     overflow-x: hidden;
 }
 
+html,
+body {
+    min-height: 100%;
+    width: 100%;
+    max-width: 100%;
+    overflow-x: hidden;
+}
+
 .inicio {
     position: relative;
     background: transparent !important;
@@ -80,6 +88,19 @@ body {
 .opiniones-track-wrapper {
     max-width: 100%;
 }
+
+/* PROBLEMA DE DEGRADADOS */
+.base-hero,
+.hero-divider,
+.marca-trabajo,
+.marca-incluye,
+.marca-resultados,
+.footer {
+    position: relative;
+    background: transparent !important;
+    isolation: isolate;
+}
+
 
 .menu {
     position: fixed;
@@ -217,13 +238,25 @@ body {
     text-shadow: 0 0 28px rgba(120, 185, 255, 0.12);
 }
 
-.base-hero-text p {
+/* .base-hero-text p {
     max-width: 600px;
     margin: 0 auto 32px;
 
     font-size: 1rem;
     line-height: 1.65;
     color: rgba(244, 247, 240, 0.72);
+} */
+
+.marca-hero {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    color: rgba(255, 255, 255, 0.82);
+    max-width: 720px;
+    margin: 0 auto;
+}
+
+.hero-2 {
+    margin-bottom: 18px;
 }
 
 .base-actions {
@@ -343,7 +376,333 @@ body {
 }
 
 
+.marca-section {
+    position: relative;
+    padding: 120px 40px;
+    background: transparent;
+    overflow: visible;
+}
 
+.marca-container {
+    position: relative;
+    z-index: 2;
+    max-width: 1280px;
+    margin: 0 auto;
+}
+
+.marca-split {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    align-items: center;
+    gap: 70px;
+}
+
+.marca-resultados {
+    position: relative;
+    overflow: hidden;
+}
+
+.marca-incluye::before,
+.marca-trabajo::before {
+    content: "";
+    position: absolute;
+    width: 720px;
+    height: 720px;
+    background: radial-gradient(circle, rgba(14, 95, 244, 0.34), rgba(14, 95, 244, 0.12) 38%, transparent 72%);
+    filter: blur(130px);
+    pointer-events: none;
+}
+
+.marca-resultados::before {
+    content: "";
+    position: absolute;
+
+    width: 900px;
+    height: 900px;
+
+    top: 25%;
+    left: 30%;
+    transform: translate(-50%, -50%);
+
+    background: radial-gradient(
+        circle at 35% 35%, /* 👈 clave */
+        rgba(14, 94, 244, 0.548) 0%,
+        rgba(14, 94, 244, 0.356) 35%,
+        rgba(14, 94, 244, 0.308) 55%,
+        transparent 75%
+    );
+
+    filter: blur(140px);
+    z-index: 0;
+}
+
+.marca-resultados::after {
+    content: "";
+    position: absolute;
+
+    width: 500px;
+    height: 500px;
+
+    bottom: -100px;
+    right: -100px;
+
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(14, 95, 244, 0.08) 40%,
+            transparent 70%);
+
+    filter: blur(100px);
+    z-index: 0;
+}
+
+.marca-incluye::before {
+    left: -240px;
+    top: 20%;
+}
+
+.marca-trabajo::before {
+    right: -240px;
+    top: 20%;
+}
+
+.marca-resultados::before {
+    left: 50%;
+    bottom: -260px;
+    transform: translateX(-50%);
+}
+
+.marca-visual {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.marca-visual img {
+    position: relative;
+    z-index: 2;
+    width: 100%;
+    max-width: 540px;
+    object-fit: contain;
+}
+
+.marca-content h2,
+.marca-result-card h2 {
+    margin: 0 0 28px;
+    color: #fff;
+    font-size: 3rem;
+    line-height: 1.1;
+}
+
+.marca-label {
+    display: inline-block;
+    margin-bottom: 14px;
+    color: rgba(255, 255, 255, 0.48);
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+}
+
+.marca-checklist {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+
+.marca-checklist li {
+    position: relative;
+    padding: 18px 22px 18px 54px;
+    border-radius: 20px;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1rem;
+    line-height: 1.5;
+    background: rgba(255, 255, 255, 0.06);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(12px);
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.marca-checklist li::before {
+    content: "✓";
+    position: absolute;
+    left: 20px;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 24px;
+    height: 24px;
+    border-radius: 50%;
+    display: grid;
+    place-items: center;
+    color: #fff;
+    font-size: 0.85rem;
+    background: rgba(14, 95, 244, 0.45);
+    box-shadow: 0 0 18px rgba(14, 95, 244, 0.35);
+}
+
+.marca-checklist li:hover {
+    background: rgba(255, 255, 255, 0.12);
+    border-color: var(--cuarto);
+    box-shadow: 0 0 14px rgba(255, 255, 255, 0.12);
+}
+
+.marca-card-content {
+    padding: 42px;
+    border-radius: 28px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(12px);
+}
+
+.marca-checklist-alt li {
+    background: transparent;
+    border: 1px solid rgba(255, 255, 255, 0.08);
+}
+
+.marca-text {
+    margin: 28px 0 0;
+    color: rgba(255, 255, 255, 0.78);
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+/* mockup CSS */
+.marca-result-card {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 54px;
+    border-radius: 32px;
+    background: rgba(255, 255, 255, 0.055);
+    border: 1px solid rgba(255, 255, 255, 0.10);
+    backdrop-filter: blur(14px);
+}
+
+.marca-price {
+    margin-top: 30px;
+    padding: 24px;
+    border-radius: 22px;
+    background: rgba(14, 95, 244, 0.12);
+    border: 1px solid rgba(14, 95, 244, 0.26);
+    text-align: center;
+}
+
+.marca-price .marca-price-2 {
+    margin: 0;
+    color: rgba(255, 255, 255, 0.88);
+    font-size: 1rem;
+    line-height: 1.7;
+    margin-top: 15px;
+}
+
+.marca-price p+p {
+    margin-top: 6px;
+}
+
+.marca-price {
+    background: rgba(14, 95, 244, 0.12);
+    border: 1px solid rgba(14, 95, 244, 0.26);
+    font-size: 2rem;
+}
+
+.marca-btn {
+    display: inline-flex;
+    margin-top: 28px;
+    padding: 13px 28px;
+    border-radius: 999px;
+    color: #fff;
+    text-decoration: none;
+    font-weight: 600;
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    backdrop-filter: blur(8px);
+    transition: all 0.3s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 28px auto 0;
+}
+
+.marca-btn:hover {
+    background: rgba(14, 95, 244, 0.22);
+    border-color: rgba(14, 95, 244, 0.48);
+    box-shadow: 0 0 22px rgba(14, 95, 244, 0.32);
+    transform: translateY(-2px);
+}
+
+.marca-img-proceso {
+    position: relative;
+    min-height: 520px;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.marca-img-proceso::before {
+    content: "";
+    position: absolute;
+
+    width: 620px;
+    height: 620px;
+
+    background: radial-gradient(circle,
+            rgba(14, 95, 244, 0.42) 0%,
+            rgba(14, 95, 244, 0.18) 38%,
+            rgba(14, 95, 244, 0.06) 58%,
+            rgba(14, 95, 244, 0) 78%);
+
+    filter: blur(120px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.marca-img-proceso::after {
+    content: "";
+    position: absolute;
+
+    width: 420px;
+    height: 420px;
+
+    background: radial-gradient(circle,
+            rgba(255, 255, 255, 0.06) 0%,
+            rgba(14, 95, 244, 0.08) 42%,
+            rgba(14, 95, 244, 0) 75%);
+
+    filter: blur(80px);
+    z-index: 1;
+    pointer-events: none;
+}
+
+.marca-img-proceso img {
+    position: relative;
+    z-index: 2;
+
+    width: 100%;
+    max-width: 560px;
+    height: auto;
+    object-fit: contain;
+
+    animation: marcaFloat 5s ease-in-out infinite;
+    filter: drop-shadow(0 28px 55px rgba(0, 0, 0, 0.35));
+}
+
+@keyframes marcaFloat {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
 
 
 
@@ -462,10 +821,7 @@ body {
 
 
 /* RESPONSIVE */
-@media (max-width: 1280px) {
-
-
-}
+@media (max-width: 1280px) {}
 
 @media (max-width: 1024px) {
 
@@ -503,6 +859,27 @@ body {
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .marca-split {
+        gap: 48px;
+    }
+
+    .marca-content h2,
+    .marca-result-card h2 {
+        font-size: 2.4rem;
+    }
+
+    .marca-visual img {
+        max-width: 460px;
+    }
+
+    .marca-img-proceso {
+        min-height: 430px;
+    }
+
+    .marca-img-proceso img {
+        max-width: 460px;
     }
 }
 
@@ -578,6 +955,64 @@ body {
         font-size: 0.96rem;
     }
 
+    .marca-hero p {
+        font-size: 1rem;
+        line-height: 1.7;
+        max-width: 100%;
+    }
+
+    .marca-section {
+        padding: 80px 24px;
+    }
+
+    .marca-split,
+    .marca-split-reverse {
+        grid-template-columns: 1fr;
+        gap: 38px;
+    }
+
+    .marca-split-reverse .marca-content {
+        order: 2;
+    }
+
+    .marca-content h2,
+    .marca-result-card h2 {
+        font-size: 2rem;
+    }
+
+    .marca-visual img {
+        max-width: 360px;
+    }
+
+    .marca-card-content,
+    .marca-result-card {
+        padding: 32px 24px;
+    }
+
+    .mockup-screen {
+        width: 100%;
+    }
+
+    .marca-img-proceso {
+        min-height: 360px;
+        order: 1;
+    }
+
+    .marca-split-reverse .marca-content {
+        order: 2;
+    }
+
+    .marca-img-proceso img {
+        max-width: 360px;
+    }
+
+    .marca-img-proceso::before {
+        width: 90vw;
+        height: 90vw;
+        filter: blur(90px);
+    }
+
+
 
 
 
@@ -614,10 +1049,7 @@ body {
 
 }
 
-@media (max-width: 600px) {
-
-
-}
+@media (max-width: 600px) {}
 
 @media (max-width: 480px) {
     .base-hero {
@@ -643,7 +1075,37 @@ body {
         max-width: 280px;
     }
 
+    .marca-section {
+        padding: 70px 20px;
+    }
 
+    .marca-content h2,
+    .marca-result-card h2 {
+        font-size: 1.75rem;
+    }
+
+    .marca-checklist li {
+        padding: 16px 18px 16px 50px;
+        font-size: 0.92rem;
+    }
+
+    .marca-text,
+    .marca-price p {
+        font-size: 0.92rem;
+    }
+
+    .marca-btn {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .marca-img-proceso {
+        min-height: 300px;
+    }
+
+    .marca-img-proceso img {
+        max-width: 290px;
+    }
 
 
 
@@ -668,6 +1130,4 @@ body {
 
 }
 
-@media (max-width: 360px) {
-
-}
+@media (max-width: 360px) {}

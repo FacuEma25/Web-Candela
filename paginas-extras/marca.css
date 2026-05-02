@@ -168,18 +168,31 @@ img {
     isolation: isolate;
 }
 
+/* .inicio {
+    position: relative;
+    background: transparent !important;
+    overflow: visible !important;
+} */
+
+
+
+
 /* HERO - MISMO MODELO DE MARKETING */
 
 .service-hero.hero-folds {
     position: relative;
+    z-index: 1;
+    margin-bottom: 0;
     min-height: 100vh;
     padding: 150px 40px 110px;
+
     display: flex;
     align-items: center;
     justify-content: center;
     overflow: hidden;
     background:
-        radial-gradient(circle at 50% 18%, rgba(14, 95, 244, 0.13) 0%, rgba(14, 95, 244, 0.045) 32%, transparent 58%),
+        radial-gradient(circle at 50% 18%, rgba(14, 94, 244, 0.384) 0%, rgba(14, 140, 244, 0.267) 32%, transparent 58%),
+        radial-gradient(circle at 50% 58%, rgba(14, 94, 244, 0.527) 0%, transparent 46%),
         var(--oscuro);
 }
 
@@ -188,6 +201,7 @@ img {
     inset: 0;
     z-index: 1;
     pointer-events: none;
+
     background:
         radial-gradient(circle at 24% 50%, rgba(35, 122, 255, 0.32) 0%, rgba(35, 122, 255, 0.12) 18%, transparent 42%),
         radial-gradient(circle at 76% 52%, rgba(71, 173, 255, 0.22) 0%, rgba(71, 173, 255, 0.08) 18%, transparent 42%),
@@ -199,8 +213,10 @@ img {
     inset: 0;
     z-index: 3;
     pointer-events: none;
+
     background:
-        radial-gradient(ellipse at center, transparent 0%, transparent 48%, rgba(0, 0, 0, 0.22) 100%);
+        radial-gradient(ellipse at center, transparent 0%, transparent 42%, rgba(0, 0, 0, 0.46) 100%),
+        linear-gradient(180deg, rgba(0, 0, 0, 0.35) 0%, transparent 24%, rgba(0, 0, 0, 0.42) 100%);
 }
 
 .service-hero-container {
@@ -279,26 +295,42 @@ img {
 
 /* HERO DIVIDER */
 
+/* HERO DIVIDER */
+
 .hero-divider {
     position: relative;
-    width: 100%;
-    height: 260px;
-    margin-top: -1px;
+    height: 320px;
+    margin-top: -180px;
     margin-bottom: -80px;
+    background: transparent !important;
+    overflow: visible !important;
+    isolation: isolate;
+    z-index: 5;
     pointer-events: none;
-    z-index: 3;
 }
 
 .hero-divider::before {
     content: "";
     position: absolute;
-    inset: -8px 0 0 0;
+    inset: 0;
     background:
-        radial-gradient(ellipse at left center, rgba(0, 89, 255, 0.70) 0%, rgba(14, 95, 244, 0.42) 22%, rgba(14, 95, 244, 0.12) 42%, transparent 68%),
-        radial-gradient(ellipse at right center, rgba(0, 89, 255, 0.70) 0%, rgba(14, 95, 244, 0.42) 22%, rgba(14, 95, 244, 0.12) 42%, transparent 68%);
-    filter: blur(80px);
-    opacity: 0.85;
-    transform: scaleX(1.12);
+        radial-gradient(ellipse at left center,
+            rgba(4, 54, 146, 0.95) 0%,
+            rgba(8, 57, 148, 0.65) 18%,
+            rgba(14, 95, 244, 0.22) 34%,
+            transparent 58%),
+        radial-gradient(ellipse at right center,
+            rgba(0, 89, 255, 0.95) 0%,
+            rgba(14, 95, 244, 0.65) 18%,
+            rgba(14, 95, 244, 0.22) 34%,
+            transparent 58%),
+        linear-gradient(to bottom,
+            transparent 0%,
+            rgba(15, 22, 28, 0.35) 45%,
+            transparent 100%);
+    filter: blur(36px);
+    transform: scale(1.15);
+    pointer-events: none;
 }
 
 .hero-divider::after {
@@ -307,11 +339,17 @@ img {
     left: 50%;
     top: 50%;
     width: 70%;
-    height: 70px;
+    height: 36px;
     transform: translate(-50%, -50%);
-    background: radial-gradient(ellipse, rgba(75, 150, 255, 0.25) 0%, rgba(14, 95, 244, 0.14) 35%, transparent 72%);
-    filter: blur(65px);
-    opacity: 0.7;
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(14, 95, 244, 0.25) 18%,
+            rgba(145, 205, 255, 0.55) 50%,
+            rgba(14, 95, 244, 0.25) 82%,
+            transparent 100%);
+    filter: blur(26px);
+    opacity: 0.75;
+    pointer-events: none;
 }
 
 /* PROPUESTA */
@@ -607,6 +645,19 @@ img {
     z-index: 1;
 }
 
+.footer::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(to bottom,
+            rgba(5, 40, 104, 0) 0%,
+            rgba(5, 40, 104, 0.45) 30%,
+            rgba(5, 40, 104, 0.75) 60%,
+            rgba(5, 40, 104, 0.96) 100%);
+    pointer-events: none;
+    z-index: 1;
+}
+
 .footer-top,
 .footer-bottom {
     position: relative;
@@ -747,10 +798,10 @@ img {
         max-width: 280px;
     }
 
-    .hero-divider {
+    /* .hero-divider {
         height: 190px;
         margin-bottom: -60px;
-    }
+    } */
 
     .intervencion-propuesta,
     .negocios-section,

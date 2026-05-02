@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <link rel="stylesheet" href="audiovisual.css">
+    <script src="https://kit.fontawesome.com/6937dfc962.js" crossorigin="anonymous"></script>
+</head>
+
+<body>
+    <header class="inicio" id="inicio">
+        <div class="menu">
+            <a href="index.html">
+                <img class="img-logo" src="/img/Candela-logo-barra.png" alt="Candela Canavesi">
+            </a>
+
+            <input type="checkbox" id="menu">
+
+            <label for="menu">
+                <img src="img/menu-btn.png" class="menu-icon" alt="Abrir menú">
+            </label>
+
+            <nav class="navbar">
+                <ul>
+                    <li><a href="#inicio">Inicio</a></li>
+                    <li><a href="#experiencia">Experiencia</a></li>
+                    <li><a href="#sobremi">Sobre mi</a></li>
+                    <li><a href="#empresas">Empresas</a></li>
+                    <li><a href="#servicios">Servicios</a></li>
+                    <li><a href="#opiniones">Opiniones</a></li>
+                    <li><a href="#contact">Contacto</a></li>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+    <main>
+        <!-- HERO -->
+        <section class="base-hero hero-folds" id="inicio">
+            <div class="hero-folds-light"></div>
+            <div class="hero-folds-vignette"></div>
+
+            <div class="base-hero-container">
+                <div class="base-hero-text">
+                    <span class="section-kicker">Servicio</span>
+
+                    <h1>Producción audiovisual</h1>
+
+                    <p>
+                        Crecimiento y escalabilidad en redes sociales y canales digitales
+                        para potenciar las ventas en el negocio.
+                    </p>
+
+                    <div class="base-actions">
+                        <a href="#planes" class="base-btn primary">Ver planes</a>
+                        <a href="#trabajo" class="base-btn secondary">Forma de trabajo</a>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <div class="hero-divider"></div>
+
+        <!-- SECCIÓN 1 -->
+        <section class="evento-hero" id="info">
+            <div class="evento-container evento-split">
+
+                <div class="evento-text">
+                    <span class="section-label">Producción audiovisual</span>
+                    <h1>Contenido para eventos</h1>
+
+                    <p>
+                        Si querés que tu evento no quede solo en el momento… sino que siga generando impacto en tus
+                        redes,
+                        esta es la opción indicada.
+                    </p>
+
+                    <p>
+                        Creamos contenido pensado para potenciar tu marca con una mirada dinámica, actual y estratégica.
+                        No es solo cubrir un evento, es capturar su esencia y transformarla en piezas que conecten,
+                        posicionen y atraigan.
+                    </p>
+
+                    <p class="evento-frase">
+                        Porque un evento pasa… pero el contenido bien pensado, vende.
+                    </p>
+
+                    <a href="ENLACE" target="_blank" class="evento-btn">Ver PDF informativo</a>
+                </div>
+
+                <div class="evento-img">
+                    <img src="img/camara-1.png" alt="Producción de contenido para eventos">
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SECCIÓN 2 -->
+        <section class="galeria-eventos" id="galeria">
+            <div class="evento-container">
+
+                <div class="galeria-rubro-header">
+                    <button class="rubro-btn prev-rubro">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <h2>Rubro: <span id="rubroNombre">Comida</span></h2>
+
+                    <button class="rubro-btn next-rubro">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+                <div class="galeria-slider">
+                    <button class="foto-btn prev-foto">
+                        <i class="fa-solid fa-chevron-left"></i>
+                    </button>
+
+                    <div class="foto-stack" id="fotoStack">
+                        <!-- JS carga fotos -->
+                    </div>
+
+                    <button class="foto-btn next-foto">
+                        <i class="fa-solid fa-chevron-right"></i>
+                    </button>
+                </div>
+
+            </div>
+        </section>
+
+
+        <!-- SECCIÓN 3 -->
+        <section class="evento-inversion" id="contacto">
+            <div class="evento-container">
+                <div class="inversion-card">
+                    <span class="section-label">Inversión</span>
+                    <h2>Es hora de invertir en tu negocio</h2>
+
+                    <div class="inversion-text">
+                        <p>Se debe abonar el total de la sesión una vez que se acuerde el día y horario.</p>
+                        <p>No se agenda la misma si no es abonada.</p>
+                        <p>El presupuesto tiene una vigencia de 1 mes.</p>
+                    </div>
+
+                    <div class="precio-box">
+                        <h3>Valor: <span>$380.000</span></h3>
+                        <p><strong>Formas de pago:</strong> Transferencia bancaria</p>
+                        <p>Máximo 24hs después del evento.</p>
+                    </div>
+
+                    <a href="#contact" class="evento-btn">Más información</a>
+                </div>
+            </div>
+        </section>
+
+    </main>
+
+    <footer class="footer">
+        <div class="footer-top">
+            <h3>¿Hablamos?</h3>
+            <p>
+                Si querés potenciar tu marca, tu negocio o tu presencia digital,
+                estamos para acompañarte.
+            </p>
+            <a href="#contact" class="footer-btn">Ir a contacto</a>
+        </div>
+
+        <div class="footer-bottom">
+            <p>2024 Emprende con Cande - All Rights Reserved</p>
+            <p>Página creada por Emprende con Cande</p>
+        </div>
+    </footer>
+
+    <script src="audiovisual.js"></script>
+</body>
+
+</html>
