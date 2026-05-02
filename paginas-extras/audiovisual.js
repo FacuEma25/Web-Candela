@@ -16,6 +16,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 /* FOTOS */
 document.addEventListener("DOMContentLoaded", () => {
+
     const rubros = [
         {
             nombre: "Moda",
@@ -56,6 +57,11 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextRubro = document.querySelector(".next-rubro");
     const prevFoto = document.querySelector(".prev-foto");
     const nextFoto = document.querySelector(".next-foto");
+    const galeriaModal = document.getElementById("galeriaModal");
+    const modalImg = document.getElementById("modalImg");
+    const modalClose = document.getElementById("modalClose");
+    const modalPrev = document.getElementById("modalPrev");
+    const modalNext = document.getElementById("modalNext");
 
     if (!rubroNombre || !fotoStack) return;
 
@@ -91,14 +97,27 @@ document.addEventListener("DOMContentLoaded", () => {
                 img.classList.add("hidden");
             }
 
+            img.addEventListener("click", () => {
+                fotoActual = index;
+                abrirModal();
+                renderGaleria();
+            });
             fotoStack.appendChild(img);
         });
     }
 
     function cambiarFoto(direccion) {
         const fotos = rubros[rubroActual].fotos;
+
         fotoActual = (fotoActual + direccion + fotos.length) % fotos.length;
-        renderGaleria();
+
+        fotoStack.classList.add("animating");
+
+        setTimeout(() => {
+            renderGaleria();
+            actualizarModal();
+            fotoStack.classList.remove("animating");
+        }, 80);
     }
 
     function cambiarRubro(direccion) {
@@ -106,11 +125,47 @@ document.addEventListener("DOMContentLoaded", () => {
         fotoActual = 0;
         renderGaleria();
     }
+    function abrirModal() {
+        if (!galeriaModal || !modalImg) return;
+
+        modalImg.src = rubros[rubroActual].fotos[fotoActual];
+        galeriaModal.classList.add("active");
+        document.body.style.overflow = "hidden";
+    }
+
+    function cerrarModal() {
+        if (!galeriaModal) return;
+
+        galeriaModal.classList.remove("active");
+        document.body.style.overflow = "";
+    }
+
+    function actualizarModal() {
+        if (!galeriaModal?.classList.contains("active")) return;
+
+        modalImg.src = rubros[rubroActual].fotos[fotoActual];
+    }
 
     prevRubro?.addEventListener("click", () => cambiarRubro(-1));
     nextRubro?.addEventListener("click", () => cambiarRubro(1));
     prevFoto?.addEventListener("click", () => cambiarFoto(-1));
     nextFoto?.addEventListener("click", () => cambiarFoto(1));
+
+    modalClose?.addEventListener("click", cerrarModal);
+    modalPrev?.addEventListener("click", () => cambiarFoto(-1));
+    modalNext?.addEventListener("click", () => cambiarFoto(1));
+
+    galeriaModal?.addEventListener("click", (e) => {
+        if (e.target === galeriaModal) cerrarModal();
+    });
+
+    document.addEventListener("keydown", (e) => {
+        if (!galeriaModal?.classList.contains("active")) return;
+
+        if (e.key === "Escape") cerrarModal();
+        if (e.key === "ArrowLeft") cambiarFoto(-1);
+        if (e.key === "ArrowRight") cambiarFoto(1);
+    });
 
     renderGaleria(); // 🔥 esto ahora carga las fotos apenas abre la página
 });
