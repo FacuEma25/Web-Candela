@@ -47,13 +47,6 @@ html {
     scroll-margin-top: 90px;
 }
 
-.page-audiovisual {
-    background:
-        radial-gradient(circle at 65% 12%, rgba(14, 95, 244, 0.24), transparent 34%),
-        radial-gradient(circle at 25% 42%, rgba(14, 95, 244, 0.18), transparent 42%),
-        linear-gradient(180deg, #071017 0%, #08192c 45%, #071017 100%);
-}
-
 /* PARA CORREGIR DESBORDE EN CELULAR */
 
 html,
@@ -73,11 +66,6 @@ body {
 
 body {
     position: relative;
-    /* background:
-        radial-gradient(circle at 12% 18%, rgba(14, 95, 244, 0.20) 0%, rgba(14, 95, 244, 0.10) 20%, transparent 42%),
-        radial-gradient(circle at 88% 30%, rgba(14, 95, 244, 0.18) 0%, rgba(14, 95, 244, 0.08) 18%, transparent 40%),
-        radial-gradient(circle at 18% 72%, rgba(14, 95, 244, 0.16) 0%, rgba(14, 95, 244, 0.07) 18%, transparent 38%),
-        linear-gradient(180deg, #041f56 0%, #0f161c 35%, #0f161c 100%); */
     background-color: var(--oscuro);
     color: var(--claro);
     overflow-x: hidden;
@@ -796,15 +784,15 @@ body {
     object-fit: contain;
 
     border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.18);
-    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+    border: 1px solid rgba(255,255,255,0.18);
+    box-shadow: 0 30px 90px rgba(0,0,0,0.55);
 }
 
 .modal-close,
 .modal-arrow {
     position: absolute;
-    border: 1px solid rgba(255, 255, 255, 0.16);
-    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255,255,255,0.16);
+    background: rgba(255,255,255,0.08);
     color: #fff;
     cursor: pointer;
 
@@ -819,8 +807,8 @@ body {
 
 .modal-close:hover,
 .modal-arrow:hover {
-    background: rgba(14, 95, 244, 0.25);
-    border-color: rgba(14, 95, 244, 0.55);
+    background: rgba(14,95,244,0.25);
+    border-color: rgba(14,95,244,0.55);
 }
 
 .modal-close {
@@ -987,12 +975,6 @@ body {
     margin: 0;
     color: rgba(255, 255, 255, 0.72);
     font-size: 0.95rem;
-}
-
-.evento-hero,
-.galeria-eventos,
-.evento-inversion {
-    background: transparent !important;
 }
 
 
@@ -1190,6 +1172,7 @@ body {
     }
 
 
+
     .footer {
         padding: 70px 24px 26px;
     }
@@ -1214,22 +1197,6 @@ body {
 
     .footer-bottom p {
         font-size: 0.9rem;
-    }
-
-    .evento-hero {
-        overflow: visible !important;
-        padding-top: 70px;
-        padding-bottom: 110px;
-    }
-
-    .evento-hero::before,
-    .evento-hero::after {
-        opacity: 0.75;
-        filter: blur(95px);
-    }
-
-    .evento-hero::after {
-        bottom: -520px;
     }
 
 
