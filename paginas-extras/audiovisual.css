@@ -784,15 +784,15 @@ body {
     object-fit: contain;
 
     border-radius: 24px;
-    border: 1px solid rgba(255,255,255,0.18);
-    box-shadow: 0 30px 90px rgba(0,0,0,0.55);
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
 }
 
 .modal-close,
 .modal-arrow {
     position: absolute;
-    border: 1px solid rgba(255,255,255,0.16);
-    background: rgba(255,255,255,0.08);
+    border: 1px solid rgba(255, 255, 255, 0.16);
+    background: rgba(255, 255, 255, 0.08);
     color: #fff;
     cursor: pointer;
 
@@ -807,8 +807,8 @@ body {
 
 .modal-close:hover,
 .modal-arrow:hover {
-    background: rgba(14,95,244,0.25);
-    border-color: rgba(14,95,244,0.55);
+    background: rgba(14, 95, 244, 0.25);
+    border-color: rgba(14, 95, 244, 0.55);
 }
 
 .modal-close {
@@ -834,45 +834,6 @@ body {
 .modal-next {
     right: 34px;
 }
-
-@media (max-width: 768px) {
-    .galeria-modal {
-        padding: 22px;
-    }
-
-    .galeria-modal img {
-        max-width: 92vw;
-        max-height: 78vh;
-        border-radius: 18px;
-    }
-
-    .modal-arrow {
-        width: 46px;
-        height: 46px;
-    }
-
-    .modal-prev {
-        left: 14px;
-    }
-
-    .modal-next {
-        right: 14px;
-    }
-
-    .modal-close {
-        top: 18px;
-        right: 18px;
-    }
-}
-
-
-
-
-
-
-
-
-
 
 /* FOOTER */
 .footer {
@@ -975,6 +936,44 @@ body {
     margin: 0;
     color: rgba(255, 255, 255, 0.72);
     font-size: 0.95rem;
+}
+
+
+
+
+
+.page-audiovisual-bg {
+    position: relative;
+    background:
+        radial-gradient(circle at 70% 8%, rgba(14, 95, 244, 0.28), transparent 30%),
+        radial-gradient(circle at 50% 38%, rgba(14, 95, 244, 0.22), transparent 42%),
+        radial-gradient(circle at 60% 78%, rgba(14, 95, 244, 0.18), transparent 40%),
+        linear-gradient(180deg, #071017 0%, #0a1930 38%, #071017 100%);
+    overflow: hidden;
+}
+
+.page-audiovisual-bg .evento-hero,
+.page-audiovisual-bg .galeria-eventos,
+.page-audiovisual-bg .evento-inversion {
+    background: transparent !important;
+}
+
+.page-audiovisual-bg .evento-hero::before,
+.page-audiovisual-bg .evento-hero::after,
+.page-audiovisual-bg .galeria-eventos::before,
+.page-audiovisual-bg .galeria-eventos::after,
+.page-audiovisual-bg .evento-inversion::before,
+.page-audiovisual-bg .evento-inversion::after {
+    display: none !important;
+}
+
+.evento-img,
+.evento-img img {
+    overflow: visible !important;
+}
+
+.evento-img img {
+    max-width: 100%;
 }
 
 
@@ -1169,6 +1168,34 @@ body {
 
     .precio-box {
         padding: 24px 18px;
+    }
+
+    .galeria-modal {
+        padding: 22px;
+    }
+
+    .galeria-modal img {
+        max-width: 92vw;
+        max-height: 78vh;
+        border-radius: 18px;
+    }
+
+    .modal-arrow {
+        width: 46px;
+        height: 46px;
+    }
+
+    .modal-prev {
+        left: 14px;
+    }
+
+    .modal-next {
+        right: 14px;
+    }
+
+    .modal-close {
+        top: 18px;
+        right: 18px;
     }
 
 
