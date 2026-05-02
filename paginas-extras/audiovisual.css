@@ -58,17 +58,14 @@ body {
 }
 
 body {
-    background:
-        radial-gradient(circle at 70% 18%, rgba(14, 95, 244, 0.22), transparent 34%),
-        radial-gradient(circle at 35% 42%, rgba(14, 95, 244, 0.16), transparent 42%),
-        linear-gradient(180deg, #071017 0%, #08131f 42%, #071017 100%);
-}
-
-body {
     position: relative;
     background-color: var(--oscuro);
     color: var(--claro);
     overflow-x: hidden;
+    background:
+        radial-gradient(circle at 70% 18%, rgba(14, 95, 244, 0.22), transparent 34%),
+        radial-gradient(circle at 35% 42%, rgba(14, 95, 244, 0.16), transparent 42%),
+        linear-gradient(180deg, #071017 0%, #08131f 42%, #071017 100%);
 }
 
 .inicio {
@@ -367,8 +364,8 @@ body {
 .evento-inversion {
     position: relative;
     padding: 120px 40px;
-    background: transparent;
-    overflow: hidden;
+    background: transparent !important;
+    overflow: visible;
 }
 
 .evento-hero {
@@ -378,7 +375,7 @@ body {
     background: transparent !important;
 }
 
-.evento-hero::before {
+/* .evento-hero::before {
     content: "";
     position: absolute;
     inset: 0;
@@ -405,9 +402,9 @@ body {
     filter: blur(140px);
     opacity: 0.9;
     z-index: 0;
-}
+} */
 
-.galeria-eventos::before,
+/* .galeria-eventos::before,
 .evento-inversion::before {
     content: "";
     position: absolute;
@@ -420,9 +417,9 @@ body {
     filter: blur(130px);
     pointer-events: none;
     z-index: 0;
-}
+} */
 
-.evento-hero::before {
+/* .evento-hero::before {
     right: -220px;
     top: 12%;
 }
@@ -436,7 +433,7 @@ body {
 .evento-inversion::before {
     left: -240px;
     top: 20%;
-}
+} */
 
 .evento-split {
     display: grid;
@@ -940,9 +937,9 @@ body {
 
 
 
+/* CODIGO PARA PROBAR PROBLEMA DEGRADADO EN CELULAR */
 
-
-.page-audiovisual-bg {
+/* .page-audiovisual-bg {
     position: relative;
     background:
         radial-gradient(circle at 70% 8%, rgba(14, 95, 244, 0.28), transparent 30%),
@@ -974,6 +971,31 @@ body {
 
 .evento-img img {
     max-width: 100%;
+} */
+
+
+body {
+    background:
+        radial-gradient(circle at 72% 10%, rgba(14, 95, 244, 0.26), transparent 34%),
+        radial-gradient(circle at 50% 35%, rgba(14, 95, 244, 0.22), transparent 44%),
+        radial-gradient(circle at 50% 72%, rgba(14, 95, 244, 0.18), transparent 42%),
+        linear-gradient(180deg, #071017 0%, #0a1930 42%, #071017 100%) !important;
+}
+
+.evento-hero,
+.galeria-eventos,
+.evento-inversion {
+    background: transparent !important;
+    overflow: visible !important;
+}
+
+.evento-hero::before,
+.evento-hero::after,
+.galeria-eventos::before,
+.galeria-eventos::after,
+.evento-inversion::before,
+.evento-inversion::after {
+    display: none !important;
 }
 
 
