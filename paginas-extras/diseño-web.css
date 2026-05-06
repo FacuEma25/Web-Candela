@@ -885,6 +885,8 @@ body {
     object-fit: cover;
     object-position: top center;
     display: block;
+
+    transition: transform 0.55s ease, filter 0.55s ease;
 }
 
 .web-page-card::after {
