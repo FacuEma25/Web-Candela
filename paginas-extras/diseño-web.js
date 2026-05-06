@@ -18,28 +18,29 @@ document.addEventListener("DOMContentLoaded", () => {
     const track = document.querySelector(".web-pages-track");
     const prev = document.querySelector(".web-prev");
     const next = document.querySelector(".web-next");
+    const cards = document.querySelectorAll(".web-page-card");
 
-    if (!track || !prev || !next) return;
+    if (!track || !prev || !next || !cards.length) return;
 
-    function getScrollAmount() {
-        const card = track.querySelector(".web-page-card");
-        if (!card) return 300;
+    let index = 0;
 
-        const gap = 28;
-        return card.offsetWidth + gap;
+    function updateCarousel() {
+        const width = track.clientWidth;
+        track.scrollTo({
+            left: width * index,
+            behavior: "smooth"
+        });
     }
 
-    prev.addEventListener("click", () => {
-        track.scrollBy({
-            left: -getScrollAmount(),
-            behavior: "smooth"
-        });
+    next.addEventListener("click", () => {
+        index = (index + 1) % cards.length;
+        updateCarousel();
     });
 
-    next.addEventListener("click", () => {
-        track.scrollBy({
-            left: getScrollAmount(),
-            behavior: "smooth"
-        });
+    prev.addEventListener("click", () => {
+        index = (index - 1 + cards.length) % cards.length;
+        updateCarousel();
     });
+
+    window.addEventListener("resize", updateCarousel);
 });
