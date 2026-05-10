@@ -670,7 +670,7 @@ img {
 }
 
 .logo-card:nth-child(3) {
-    --logo-scale: 0.85;
+    --logo-scale: 0.8;
 }
 
 .logo-card:nth-child(4) {
@@ -678,11 +678,11 @@ img {
 }
 
 .logo-card:nth-child(5) {
-    --logo-scale: 0.9;
+    --logo-scale: 0.6;
 }
 
 .logo-card:nth-child(6) {
-    --logo-scale: 1.4;
+    --logo-scale: 1.6;
 }
 
 .logo-card:nth-child(7) {
@@ -694,7 +694,7 @@ img {
 }
 
 .logo-card:nth-child(9) {
-    --logo-scale: 1.2;
+    --logo-scale: 0.7;
 }
 
 .logo-rubro {
@@ -887,6 +887,8 @@ img {
     justify-content: center;
 }
 
+.card:nth-child(2) { --img-scale: 1; }
+
 .servicios .icono::before {
     content: "";
     position: absolute;
@@ -900,8 +902,8 @@ img {
 .servicios .icono img {
     position: relative;
     z-index: 2;
-    width: 78px;
-    height: 78px;
+    width: 120px;
+    height: 120px;
     object-fit: contain;
 }
 

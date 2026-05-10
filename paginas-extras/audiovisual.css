@@ -57,7 +57,7 @@ body {
     overflow-x: hidden;
 }
 
-body {
+/* body {
     position: relative;
     background-color: var(--oscuro);
     color: var(--claro);
@@ -66,9 +66,29 @@ body {
         radial-gradient(circle at 70% 18%, rgba(14, 95, 244, 0.22), transparent 34%),
         radial-gradient(circle at 35% 42%, rgba(14, 95, 244, 0.16), transparent 42%),
         linear-gradient(180deg, #071017 0%, #08131f 42%, #071017 100%);
+} */
+
+body {
+    position: relative;
+    color: var(--claro);
+    overflow-x: hidden;
+    background: var(--oscuro);
 }
 
-main::before {
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 10% 20%, rgba(14, 95, 244, 0.12), transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(14, 95, 244, 0.10), transparent 45%),
+        radial-gradient(circle at 20% 75%, rgba(14, 95, 244, 0.08), transparent 40%);
+}
+
+/* main::before {
     content: "";
     position: fixed;
     inset: 0;
@@ -80,7 +100,7 @@ main::before {
         radial-gradient(circle at 20% 50%, rgba(0,195,255,0.18), transparent 40%);
 
     filter: blur(100px);
-}
+} */
 
 .inicio {
     position: relative;
@@ -88,7 +108,7 @@ main::before {
     overflow: visible !important;
 }
 
-.base-hero,
+/* .base-hero, */
 .hero-divider,
 .evento-hero,
 .galeria-eventos,
@@ -182,13 +202,6 @@ main::before {
         radial-gradient(circle at 50% 18%, rgba(14, 94, 244, 0.384) 0%, rgba(14, 140, 244, 0.267) 32%, transparent 58%),
         radial-gradient(circle at 50% 58%, rgba(14, 94, 244, 0.527) 0%, transparent 46%),
         var(--oscuro);
-    /* azul oscuro base de la web */
-
-    /* DEGRADADO ORIGINAL */
-    /* background:
-        radial-gradient(circle at 50% 18%, rgba(14, 95, 244, 0.16) 0%, rgba(14, 95, 244, 0.06) 32%, transparent 58%),
-        radial-gradient(circle at 50% 58%, rgba(14, 95, 244, 0.10) 0%, transparent 46%),
-        var(--oscuro); */
 }
 
 /* Glow general detrás del texto */
@@ -377,7 +390,7 @@ main::before {
 .galeria-eventos,
 .evento-inversion {
     position: relative;
-    padding: 120px 40px;
+    padding: 80px 40px 80px 40px;
     background: transparent !important;
     overflow: visible;
 }
@@ -388,66 +401,6 @@ main::before {
     overflow: visible;
     background: transparent !important;
 }
-
-/* .evento-hero::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    background:
-        radial-gradient(circle at 30% 70%, rgba(14, 95, 244, 0.35), transparent 50%),
-        radial-gradient(circle at 80% 40%, rgba(0, 195, 255, 0.25), transparent 50%),
-        radial-gradient(circle at 60% 90%, rgba(14, 95, 244, 0.2), transparent 60%);
-    filter: blur(120px);
-    z-index: 0;
-}
-
-.evento-hero::after {
-    content: "";
-    position: absolute;
-    width: 800px;
-    height: 800px;
-    bottom: -200px;
-    left: 50%;
-    transform: translateX(-50%);
-    background: radial-gradient(circle,
-            rgba(0, 195, 255, 0.25),
-            rgba(14, 95, 244, 0.18),
-            transparent 70%);
-    filter: blur(140px);
-    opacity: 0.9;
-    z-index: 0;
-} */
-
-/* .galeria-eventos::before,
-.evento-inversion::before {
-    content: "";
-    position: absolute;
-    width: 850px;
-    height: 850px;
-    background: radial-gradient(circle,
-            rgba(14, 95, 244, 0.28),
-            rgba(14, 95, 244, 0.10) 38%,
-            transparent 72%);
-    filter: blur(130px);
-    pointer-events: none;
-    z-index: 0;
-} */
-
-/* .evento-hero::before {
-    right: -220px;
-    top: 12%;
-}
-
-.galeria-eventos::before {
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-}
-
-.evento-inversion::before {
-    left: -240px;
-    top: 20%;
-} */
 
 .evento-split {
     display: grid;
@@ -948,44 +901,6 @@ main::before {
     color: rgba(255, 255, 255, 0.72);
     font-size: 0.95rem;
 }
-
-
-
-/* CODIGO PARA PROBAR PROBLEMA DEGRADADO EN CELULAR */
-
-/* .page-audiovisual-bg {
-    position: relative;
-    background:
-        radial-gradient(circle at 70% 8%, rgba(14, 95, 244, 0.28), transparent 30%),
-        radial-gradient(circle at 50% 38%, rgba(14, 95, 244, 0.22), transparent 42%),
-        radial-gradient(circle at 60% 78%, rgba(14, 95, 244, 0.18), transparent 40%),
-        linear-gradient(180deg, #071017 0%, #0a1930 38%, #071017 100%);
-    overflow: hidden;
-}
-
-.page-audiovisual-bg .evento-hero,
-.page-audiovisual-bg .galeria-eventos,
-.page-audiovisual-bg .evento-inversion {
-    background: transparent !important;
-}
-
-.page-audiovisual-bg .evento-hero::before,
-.page-audiovisual-bg .evento-hero::after,
-.page-audiovisual-bg .galeria-eventos::before,
-.page-audiovisual-bg .galeria-eventos::after,
-.page-audiovisual-bg .evento-inversion::before,
-.page-audiovisual-bg .evento-inversion::after {
-    display: none !important;
-}
-
-.evento-img,
-.evento-img img {
-    overflow: visible !important;
-}
-
-.evento-img img {
-    max-width: 100%;
-} */
 
 
 body {

@@ -58,14 +58,22 @@ body {
 
 body {
     position: relative;
-    /* background:
-        radial-gradient(circle at 12% 18%, rgba(14, 95, 244, 0.20) 0%, rgba(14, 95, 244, 0.10) 20%, transparent 42%),
-        radial-gradient(circle at 88% 30%, rgba(14, 95, 244, 0.18) 0%, rgba(14, 95, 244, 0.08) 18%, transparent 40%),
-        radial-gradient(circle at 18% 72%, rgba(14, 95, 244, 0.16) 0%, rgba(14, 95, 244, 0.07) 18%, transparent 38%),
-        linear-gradient(180deg, #041f56 0%, #0f161c 35%, #0f161c 100%); */
-    background-color: var(--oscuro);
     color: var(--claro);
     overflow-x: hidden;
+    background: var(--oscuro);
+}
+
+body::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: -10;
+    pointer-events: none;
+
+    background:
+        radial-gradient(circle at 10% 20%, rgba(14, 95, 244, 0.12), transparent 40%),
+        radial-gradient(circle at 85% 25%, rgba(14, 95, 244, 0.10), transparent 45%),
+        radial-gradient(circle at 20% 75%, rgba(14, 95, 244, 0.08), transparent 40%);
 }
 
 html,
@@ -90,7 +98,7 @@ body {
 }
 
 /* PROBLEMA DE DEGRADADOS */
-.base-hero,
+/* .base-hero, */
 .hero-divider,
 .marca-trabajo,
 .marca-incluye,
@@ -178,13 +186,6 @@ body {
         radial-gradient(circle at 50% 18%, rgba(14, 94, 244, 0.384) 0%, rgba(14, 140, 244, 0.267) 32%, transparent 58%),
         radial-gradient(circle at 50% 58%, rgba(14, 94, 244, 0.527) 0%, transparent 46%),
         var(--oscuro);
-    /* azul oscuro base de la web */
-
-    /* DEGRADADO ORIGINAL */
-    /* background:
-        radial-gradient(circle at 50% 18%, rgba(14, 95, 244, 0.16) 0%, rgba(14, 95, 244, 0.06) 32%, transparent 58%),
-        radial-gradient(circle at 50% 58%, rgba(14, 95, 244, 0.10) 0%, transparent 46%),
-        var(--oscuro); */
 }
 
 /* Glow general detrás del texto */
