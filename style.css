@@ -948,7 +948,7 @@ img {
 
 /* MODIFICAR A MANO LAS CARDS */
 .card:nth-child(1) { --img-scale: 1; }
-.card:nth-child(2) { --img-scale: 2.5; }
+.card:nth-child(2) { --img-scale: 1.5; }
 .card:nth-child(3) { --img-scale: 1; }
 .card:nth-child(4) { --img-scale: 1; }
 .card:nth-child(5) { --img-scale: 1; }
