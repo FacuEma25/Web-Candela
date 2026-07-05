@@ -387,3 +387,69 @@ document.addEventListener('DOMContentLoaded', () => {
         prevBtn.addEventListener('click', prevSlide);
     }
 });
+
+
+document.addEventListener("DOMContentLoaded", () => {
+    const orbit = document.querySelector(".social-hero .social-orbit");
+    const icons = document.querySelectorAll(".social-hero .orbit-icon");
+
+    if (!orbit || !icons.length) return;
+
+    let start = null;
+
+    function animateOrbit(timestamp) {
+        if (!start) start = timestamp;
+
+        const elapsed = (timestamp - start) / 1000;
+        const speed = 28; // más alto = más rápido
+
+        const rect = orbit.getBoundingClientRect();
+
+        const isMobile = window.innerWidth <= 768;
+
+        const centerX = rect.width * (isMobile ? 0.50 : 0.48);
+        const centerY = rect.height * 0.50;
+
+        const radiusX = rect.width * (isMobile ? 0.31 : 0.34);
+        const radiusY = rect.height * (isMobile ? 0.25 : 0.30);
+
+        icons.forEach((icon) => {
+            const baseAngle = Number(icon.dataset.angle);
+            const angle = (baseAngle + elapsed * speed) * Math.PI / 180;
+
+            const x = centerX + Math.cos(angle) * radiusX;
+            const y = centerY + Math.sin(angle) * radiusY;
+
+            /*
+                depth:
+                positivo = adelante de la mano
+                negativo = detrás de la mano
+            */
+            const depth = Math.sin(angle);
+
+            const scale = 0.78 + ((depth + 1) / 2) * 0.42;
+            const opacity = 0.45 + ((depth + 1) / 2) * 0.55;
+            const blur = depth < -0.25 ? 1.2 : 0;
+
+            icon.style.left = `${x}px`;
+            icon.style.top = `${y}px`;
+
+            icon.style.zIndex = depth > 0 ? 30 : 8;
+
+            icon.style.opacity = opacity;
+
+            icon.style.filter = `blur(${blur}px)`;
+
+            icon.style.transform = `
+                translate(-50%, -50%)
+                scale(${scale})
+                rotate(${baseAngle + elapsed * speed}deg)
+            `;
+        });
+
+        requestAnimationFrame(animateOrbit);
+    }
+
+    requestAnimationFrame(animateOrbit);
+});
+

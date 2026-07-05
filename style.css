@@ -264,6 +264,9 @@ img {
     pointer-events: none;
 }
 
+/* NUEVO */
+
+
 /* INICIO DE EXP */
 .exp-items {
     position: relative;
@@ -421,6 +424,23 @@ img {
     display: block;
     position: relative;
     z-index: 2;
+
+    animation: candeFloat 5s ease-in-out infinite;
+    filter: drop-shadow(0 28px 55px rgba(0, 0, 0, 0.35));
+}
+
+@keyframes candeFloat {
+    0% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-14px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
 }
 
 .candela .cande-img::after {
@@ -887,7 +907,9 @@ img {
     justify-content: center;
 }
 
-.card:nth-child(2) { --img-scale: 1; }
+.card:nth-child(2) {
+    --img-scale: 1;
+}
 
 .servicios .icono::before {
     content: "";
@@ -947,12 +969,29 @@ img {
 }
 
 /* MODIFICAR A MANO LAS CARDS */
-.card:nth-child(1) { --img-scale: 1; }
-.card:nth-child(2) { --img-scale: 1.5; }
-.card:nth-child(3) { --img-scale: 1; }
-.card:nth-child(4) { --img-scale: 1; }
-.card:nth-child(5) { --img-scale: 1; }
-.card:nth-child(6) { --img-scale: 1; }
+.card:nth-child(1) {
+    --img-scale: 1;
+}
+
+.card:nth-child(2) {
+    --img-scale: 1.5;
+}
+
+.card:nth-child(3) {
+    --img-scale: 1;
+}
+
+.card:nth-child(4) {
+    --img-scale: 1;
+}
+
+.card:nth-child(5) {
+    --img-scale: 1;
+}
+
+.card:nth-child(6) {
+    --img-scale: 1;
+}
 
 /* OPINIONES */
 .opiniones {
@@ -1498,6 +1537,228 @@ img {
     position: relative;
     z-index: 2;
 }
+
+/* NUEVO PARA HERO*/
+/* Contenedor del lado derecho */
+.hero-right-scene {
+  position: relative;
+  width: 500px;
+  height: 500px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Espacio con perspectiva 3D */
+.scene-3d {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  perspective: 1000px; 
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Posicionamiento milimétrico de las dos capas de la mano */
+.hand-layer {
+  position: absolute;
+  width: 90%; 
+  height: auto;
+  bottom: 10%; /* Ajusta para que calce bien abajo a la derecha */
+  right: 0;
+  pointer-events: none; /* Deja pasar los clicks a los iconos */
+}
+
+/* Capas en el orden del sándwich visual */
+.hand-back {
+  z-index: 1;
+  filter: drop-shadow(0 0 30px rgba(0, 110, 255, 0.25));
+}
+
+.hand-front {
+  z-index: 3; /* Queda por encima de los iconos en el eje visual estándar */
+}
+
+/* Contenedor de la órbita (Intermedio en el sándwich) */
+.orbit-wrapper {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  transform-style: preserve-3d;
+  /* Inclinación perfecta de la elipse orbital */
+  transform: rotateX(70deg) rotateY(-20deg); 
+}
+
+/* Hilos de rotación */
+.icon-orbit {
+  position: absolute;
+  top: 45%; /* Centro focal de la mano */
+  left: 50%;
+  width: 0;
+  height: 0;
+  transform-style: preserve-3d;
+  animation: orbitRotation 10s linear infinite;
+  animation-delay: var(--delay);
+}
+
+/* Tarjeta contenedora de los iconos (Estilo vidrio azul como tu web) */
+/* --- ESTILO DE LOS ICONOS CON DIFUMINADO INTENSO --- */
+/* --- TAMAÑO DE ICONOS AGRANDADO (ESCRITORIO) --- */
+.icon-card {
+  position: absolute;
+  
+  /* 1. Agrandamos el contenedor de los iconos */
+  width: 90px;   
+  height: 90px;  
+  
+  /* 2. El desfase DEBE ser la mitad exacta (negativa) del tamaño para que no se descentren al orbitar */
+  left: -45px; 
+  top: -45px;  
+  
+  /* 3. Agrandamos el logo de adentro (FontAwesome) para que acompañe el tamaño */
+  font-size: 34px; 
+
+  /* Mantenemos tu súper difuminado intenso y tus estilos visuales */
+  background: rgba(13, 38, 77, 0.45); 
+  backdrop-filter: blur(30px); 
+  -webkit-backdrop-filter: blur(30px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: 18px; /* Un poco más de curvatura para el nuevo tamaño */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #ffffff;
+  box-shadow: 0 0 25px rgb(0, 119, 255);
+  
+  animation: counterRotation 10s linear infinite;
+  animation-delay: var(--delay);
+}
+
+/* .icon-card i {
+  width: 60px;
+  height: 60px;
+} */
+
+/* --- ANIMACIONES --- */
+@keyframes orbitRotation {
+  from { transform: rotateZ(0deg) translateX(190px); }
+  to   { transform: rotateZ(360deg) translateX(190px); }
+}
+
+@keyframes counterRotation {
+  from { transform: rotateX(-70deg) rotateY(20deg) rotateZ(0deg); }
+  to   { transform: rotateX(-70deg) rotateY(20deg) rotateZ(-360deg); }
+}
+
+/* --- AJUSTES EXCLUSIVOS PARA DISPOSITIVOS MÓVILES --- */
+@media (max-width: 768px) {
+  
+  /* Achicamos el contenedor para eliminar el espacio vacío */
+  .hero-right-scene {
+    width: 100%;       /* Ocupa el ancho disponible del celular */
+    height: 320px;     /* Reducimos la altura para que suba la animación */
+    margin-top: -20px; /* Desplaza la animación hacia arriba, pegándose al botón */
+  }
+
+  /* Centramos el punto focal de la órbita en pantallas chicas */
+  .icon-orbit {
+    top: 50%; 
+    left: 50%;
+  }
+
+  /* Ajustamos el tamaño de los iconos en móvil para que no se vean gigantes */
+  .icon-card {
+    width: 65px;
+    height: 65px;
+    left: -32.5px; /* Sigue siendo la mitad exacta del ancho */
+    top: -32.5px;  /* Sigue siendo la mitad exacta del alto */
+    font-size: 24px;
+    border-radius: 14px;
+  }
+
+  /* --- NUEVAS ANIMACIONES PARA MÓVIL (Órbita más compacta) --- */
+  @keyframes orbitRotation {
+    from { 
+      /* Reducimos el radio de 190px a 120px para que quepa perfecto en el ancho del celular */
+      transform: rotateZ(0deg) translateX(120px); 
+    }
+    to { 
+      transform: rotateZ(360deg) translateX(120px); 
+    }
+  }
+
+  @keyframes counterRotation {
+    from { 
+      /* Mantenemos la corrección de perspectiva adaptada al ángulo del celular */
+      transform: rotateX(-70deg) rotateY(20deg) rotateZ(0deg); 
+    }
+    to { 
+      transform: rotateX(-70deg) rotateY(20deg) rotateZ(-360deg); 
+    }
+  }
+}
+
+/* HERO DIVIDER */
+
+.hero-divider {
+    position: relative;
+    height: 320px;
+    margin-top: -180px;
+    margin-bottom: -80px;
+    background: transparent !important;
+    overflow: visible !important;
+    isolation: isolate;
+    z-index: 5;
+    pointer-events: none;
+}
+
+.hero-divider::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse at left center,
+            rgba(4, 54, 146, 0.95) 0%,
+            rgba(8, 57, 148, 0.65) 18%,
+            rgba(14, 95, 244, 0.22) 34%,
+            transparent 58%),
+        radial-gradient(ellipse at right center,
+            rgba(0, 89, 255, 0.95) 0%,
+            rgba(14, 95, 244, 0.65) 18%,
+            rgba(14, 95, 244, 0.22) 34%,
+            transparent 58%),
+        linear-gradient(to bottom,
+            transparent 0%,
+            rgba(15, 22, 28, 0.35) 45%,
+            transparent 100%);
+    filter: blur(36px);
+    transform: scale(1.15);
+    pointer-events: none;
+}
+
+.hero-divider::after {
+    content: "";
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 70%;
+    height: 36px;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(90deg,
+            transparent 0%,
+            rgba(14, 95, 244, 0.25) 18%,
+            rgba(145, 205, 255, 0.55) 50%,
+            rgba(14, 95, 244, 0.25) 82%,
+            transparent 100%);
+    filter: blur(26px);
+    opacity: 0.75;
+    pointer-events: none;
+}
+
+/* NUEVO 2.2 /
+
 
 /* ========================= */
 /* BREAKPOINTS */
