@@ -88,13 +88,14 @@ body {
     overflow: visible !important;
 } */
 
-.inicio{
+/* INICIO ANTERIOR */
+/* .inicio{
     position: relative;
     overflow: hidden;
     background:#0b1118;
-}
+} */
 
-.inicio::before{
+/* .inicio::before{
     content:"";
     position:absolute;
     inset:0;
@@ -115,6 +116,29 @@ body {
     filter: blur(60px);
 
     z-index:0;
+} */
+
+html,
+body {
+    width: 100%;
+    max-width: 100%;
+    overflow-x: clip;
+}
+
+body {
+    background-color: var(--oscuro);
+}
+
+.inicio,
+.exp-items,
+.candela,
+.companias-2,
+.servicios,
+.opiniones,
+.contact {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
 }
 
 .inicio::before{
@@ -1596,7 +1620,8 @@ img {
     z-index: 2;
 }
 
-/* NUEVO PARA HERO*/
+/* NUEVO PARA HERO PARA LA PARTE DE LA DERECHA*/
+
 /* Contenedor del lado derecho */
 .hero-right-scene {
   position: relative;
@@ -1709,6 +1734,89 @@ img {
   from { transform: rotateX(-70deg) rotateY(20deg) rotateZ(0deg); }
   to   { transform: rotateX(-70deg) rotateY(20deg) rotateZ(-360deg); }
 }
+
+/* =========================
+   SCROLL REVEAL - INDEX
+========================= */
+
+/* =========================
+   SCROLL REVEAL
+========================= */
+
+.reveal {
+    opacity: 0;
+    transform: translate3d(0, 38px, 0);
+    transition:
+        opacity 0.75s ease,
+        transform 0.75s ease;
+    will-change: opacity, transform;
+}
+
+.reveal.is-visible {
+    opacity: 1;
+    transform: translate3d(0, 0, 0);
+}
+
+.reveal-left {
+    transform: translate3d(-32px, 0, 0);
+}
+
+.reveal-right {
+    transform: translate3d(32px, 0, 0);
+}
+
+.reveal-scale {
+    transform: scale(0.96);
+}
+
+.reveal-left.is-visible,
+.reveal-right.is-visible,
+.reveal-scale.is-visible {
+    transform: translate3d(0, 0, 0) scale(1);
+}
+
+.reveal-delay-1 {
+    transition-delay: 0.1s;
+}
+
+.reveal-delay-2 {
+    transition-delay: 0.2s;
+}
+
+.reveal-delay-3 {
+    transition-delay: 0.3s;
+}
+
+.reveal-delay-4 {
+    transition-delay: 0.4s;
+}
+
+/* En mobile hacemos el efecto más corto para que no rompa */
+@media (max-width: 768px) {
+    .reveal {
+        transform: translateY(28px);
+        transition-duration: 0.65s;
+    }
+
+    .reveal-left,
+    .reveal-right {
+        transform: translateY(28px);
+    }
+
+    .reveal-scale {
+        transform: scale(0.96);
+    }
+}
+
+/* Respeta usuarios que tienen animaciones reducidas */
+@media (prefers-reduced-motion: reduce) {
+    .reveal {
+        opacity: 1;
+        transform: none;
+        transition: none;
+    }
+}
+
 
 /* --- AJUSTES EXCLUSIVOS PARA DISPOSITIVOS MÓVILES --- */
 @media (max-width: 768px) {

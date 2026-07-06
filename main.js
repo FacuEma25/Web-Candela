@@ -453,3 +453,29 @@ document.addEventListener("DOMContentLoaded", () => {
     requestAnimationFrame(animateOrbit);
 });
 
+/* PROBANDO SCROLL */
+// SCROLL REVEAL - INTERSECTION OBSERVER
+document.addEventListener('DOMContentLoaded', () => {
+    const revealElements = document.querySelectorAll('.reveal');
+
+    if (!revealElements.length) return;
+
+    const observerOptions = {
+        root: null,
+        threshold: 0.15,
+        rootMargin: '0px 0px -80px 0px'
+    };
+
+    const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+            if (!entry.isIntersecting) return;
+
+            entry.target.classList.add('is-visible');
+            observer.unobserve(entry.target);
+        });
+    }, observerOptions);
+
+    revealElements.forEach(element => {
+        revealObserver.observe(element);
+    });
+});
