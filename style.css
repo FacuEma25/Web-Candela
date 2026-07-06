@@ -1816,13 +1816,13 @@ img {
 }
 
 /* Respeta usuarios que tienen animaciones reducidas */
-@media (prefers-reduced-motion: reduce) {
+/* @media (prefers-reduced-motion: reduce) {
     .reveal {
         opacity: 1;
         transform: none;
         transition: none;
     }
-}
+} */
 
 
 /* --- AJUSTES EXCLUSIVOS PARA DISPOSITIVOS MÓVILES --- */
