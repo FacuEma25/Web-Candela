@@ -1794,17 +1794,24 @@ img {
 /* En mobile hacemos el efecto más corto para que no rompa */
 @media (max-width: 768px) {
     .reveal {
-        transform: translateY(28px);
-        transition-duration: 0.65s;
+        opacity: 0;
+        transform: translateY(24px);
+        transition: opacity .65s ease, transform .65s ease;
+    }
+
+    .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
     }
 
     .reveal-left,
     .reveal-right {
-        transform: translateY(28px);
+        transform: translateY(24px);
     }
 
-    .reveal-scale {
-        transform: scale(0.96);
+    .reveal-left.is-visible,
+    .reveal-right.is-visible {
+        transform: translateY(0);
     }
 }
 
