@@ -68,24 +68,40 @@ body {
         linear-gradient(180deg, #071017 0%, #08131f 42%, #071017 100%);
 } */
 
-body {
-    position: relative;
-    color: var(--claro);
-    overflow-x: hidden;
+html {
     background: var(--oscuro);
 }
 
+body {
+    position: relative;
+    min-height: 100%;
+    color: var(--claro);
+    background: var(--oscuro);
+    overflow-x: clip;
+}
 body::before {
     content: "";
     position: fixed;
     inset: 0;
-    z-index: -10;
+    z-index: 0;
     pointer-events: none;
 
     background:
-        radial-gradient(circle at 10% 20%, rgba(14, 95, 244, 0.12), transparent 40%),
-        radial-gradient(circle at 85% 25%, rgba(14, 95, 244, 0.10), transparent 45%),
-        radial-gradient(circle at 20% 75%, rgba(14, 95, 244, 0.08), transparent 40%);
+        radial-gradient(
+            circle at 10% 20%,
+            rgba(14, 95, 244, 0.12),
+            transparent 40%
+        ),
+        radial-gradient(
+            circle at 85% 25%,
+            rgba(14, 95, 244, 0.10),
+            transparent 45%
+        ),
+        radial-gradient(
+            circle at 20% 75%,
+            rgba(14, 95, 244, 0.08),
+            transparent 40%
+        );
 }
 
 /* main::before {
@@ -116,7 +132,7 @@ body::before {
 .footer {
     position: relative;
     background: transparent !important;
-    isolation: isolate;
+    /* isolation: isolate; */
 }
 
 .evento-hero,
@@ -773,7 +789,7 @@ body::before {
     outline-offset: 4px;
 }
 
-.galeria-modal {
+/* .galeria-modal {
     display: flex;
 
     visibility: hidden;
@@ -810,7 +826,7 @@ body::before {
     opacity: 0;
     filter: blur(5px);
     transform: scale(0.975);
-}
+} */
 
 body.modal-abierto {
     overflow: hidden;
@@ -904,26 +920,55 @@ body.modal-abierto {
     right: 30px;
 }
 
+/* =========================
+   MODAL DE GALERÍA
+========================= */
 
-/* MODAL */
 .galeria-modal {
     position: fixed;
     inset: 0;
     z-index: 999999;
 
-    display: none;
+    display: flex;
     align-items: center;
     justify-content: center;
 
     padding: 40px;
 
-    background: rgba(3, 8, 16, 0.88);
-    backdrop-filter: blur(16px);
-    -webkit-backdrop-filter: blur(16px);
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    background: rgba(3, 8, 16, 0);
+
+    /*
+     * El filtro queda desactivado mientras el modal
+     * está cerrado para que no exista una capa gráfica
+     * de pantalla completa permanentemente.
+     */
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+
+    transition:
+        opacity 300ms ease,
+        visibility 0s linear 300ms,
+        background-color 300ms ease;
 }
 
 .galeria-modal.active {
-    display: flex;
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+
+    background: rgba(3, 8, 16, 0.88);
+
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+
+    transition:
+        opacity 300ms ease,
+        visibility 0s linear 0s,
+        background-color 300ms ease;
 }
 
 .galeria-modal img {
@@ -931,9 +976,28 @@ body.modal-abierto {
     max-height: 84vh;
     object-fit: contain;
 
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+
     border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.18);
     box-shadow: 0 30px 90px rgba(0, 0, 0, 0.55);
+
+    transition:
+        opacity 220ms ease,
+        transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 220ms ease;
+}
+
+.galeria-modal.active img {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+.galeria-modal img.cambiando {
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(0.975);
 }
 
 .modal-close,
