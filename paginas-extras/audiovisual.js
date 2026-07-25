@@ -14,9 +14,11 @@ document.addEventListener('DOMContentLoaded', () => {
 });
 
 
-/* FOTOS */
-document.addEventListener("DOMContentLoaded", () => {
+/* =========================
+   GALERÍA AUDIOVISUAL
+========================= */
 
+document.addEventListener("DOMContentLoaded", () => {
     const rubros = [
         {
             nombre: "Moda",
@@ -49,6 +51,7 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let rubroActual = 0;
     let fotoActual = 0;
+    let animando = false;
 
     const rubroNombre = document.getElementById("rubroNombre");
     const fotoStack = document.getElementById("fotoStack");
@@ -57,6 +60,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const nextRubro = document.querySelector(".next-rubro");
     const prevFoto = document.querySelector(".prev-foto");
     const nextFoto = document.querySelector(".next-foto");
+
     const galeriaModal = document.getElementById("galeriaModal");
     const modalImg = document.getElementById("modalImg");
     const modalClose = document.getElementById("modalClose");
@@ -65,107 +69,301 @@ document.addEventListener("DOMContentLoaded", () => {
 
     if (!rubroNombre || !fotoStack) return;
 
-    function getPrevIndex() {
-        const fotos = rubros[rubroActual].fotos;
-        return (fotoActual - 1 + fotos.length) % fotos.length;
+    function modulo(numero, total) {
+        return ((numero % total) + total) % total;
     }
 
-    function getNextIndex() {
-        const fotos = rubros[rubroActual].fotos;
-        return (fotoActual + 1) % fotos.length;
+    function obtenerFotosActuales() {
+        return rubros[rubroActual].fotos;
     }
 
-    function renderGaleria() {
+    function precargarImagenes(fotos) {
+        return Promise.all(
+            fotos.map(src => {
+                return new Promise(resolve => {
+                    const imagen = new Image();
+
+                    imagen.onload = resolve;
+                    imagen.onerror = resolve;
+                    imagen.src = src;
+                });
+            })
+        );
+    }
+
+    function crearGaleria() {
+        fotoStack.innerHTML = "";
+
         const rubro = rubros[rubroActual];
 
         rubroNombre.textContent = rubro.nombre;
-        fotoStack.innerHTML = "";
 
         rubro.fotos.forEach((src, index) => {
             const img = document.createElement("img");
+
             img.src = src;
-            img.alt = `${rubro.nombre} ${index + 1}`;
-            img.classList.add("gallery-img");
+            img.alt = `${rubro.nombre}, fotografía ${index + 1}`;
+            img.className = "gallery-img";
+            img.dataset.index = index;
+            img.draggable = false;
+            img.loading = index === 0 ? "eager" : "lazy";
+            img.decoding = "async";
+
+            img.addEventListener("click", () => {
+                if (animando) return;
+
+                fotoActual = index;
+                actualizarPosiciones();
+                abrirModal();
+            });
+
+            fotoStack.appendChild(img);
+        });
+
+        actualizarPosiciones(false);
+    }
+
+    function actualizarPosiciones(conAnimacion = true) {
+        const fotos = obtenerFotosActuales();
+        const imagenes = fotoStack.querySelectorAll(".gallery-img");
+
+        const anterior = modulo(fotoActual - 1, fotos.length);
+        const siguiente = modulo(fotoActual + 1, fotos.length);
+
+        if (!conAnimacion) {
+            fotoStack.classList.add("sin-transicion");
+        }
+
+        imagenes.forEach((img, index) => {
+            img.classList.remove(
+                "active",
+                "prev",
+                "next",
+                "hidden",
+                "hidden-left",
+                "hidden-right"
+            );
 
             if (index === fotoActual) {
                 img.classList.add("active");
-            } else if (index === getPrevIndex()) {
-                img.classList.add("prev");
-            } else if (index === getNextIndex()) {
-                img.classList.add("next");
+                img.setAttribute("aria-current", "true");
             } else {
-                img.classList.add("hidden");
-            }
+                img.removeAttribute("aria-current");
 
-            img.addEventListener("click", () => {
-                fotoActual = index;
-                abrirModal();
-                renderGaleria();
-            });
-            fotoStack.appendChild(img);
+                if (index === anterior) {
+                    img.classList.add("prev");
+                } else if (index === siguiente) {
+                    img.classList.add("next");
+                } else {
+                    const distanciaDerecha =
+                        modulo(index - fotoActual, fotos.length);
+
+                    const distanciaIzquierda =
+                        modulo(fotoActual - index, fotos.length);
+
+                    if (distanciaDerecha < distanciaIzquierda) {
+                        img.classList.add("hidden-right");
+                    } else {
+                        img.classList.add("hidden-left");
+                    }
+                }
+            }
         });
+
+        if (!conAnimacion) {
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    fotoStack.classList.remove("sin-transicion");
+                });
+            });
+        }
     }
 
     function cambiarFoto(direccion) {
-        const fotos = rubros[rubroActual].fotos;
+        if (animando) return;
 
-        fotoActual = (fotoActual + direccion + fotos.length) % fotos.length;
+        const fotos = obtenerFotosActuales();
 
-        fotoStack.classList.add("animating");
+        animando = true;
 
-        setTimeout(() => {
-            renderGaleria();
-            actualizarModal();
-            fotoStack.classList.remove("animating");
-        }, 80);
+        fotoActual = modulo(
+            fotoActual + direccion,
+            fotos.length
+        );
+
+        fotoStack.dataset.direction =
+            direccion > 0 ? "next" : "prev";
+
+        actualizarPosiciones();
+        actualizarModal();
+
+        window.setTimeout(() => {
+            animando = false;
+            delete fotoStack.dataset.direction;
+        }, 650);
     }
 
-    function cambiarRubro(direccion) {
-        rubroActual = (rubroActual + direccion + rubros.length) % rubros.length;
-        fotoActual = 0;
-        renderGaleria();
+    async function cambiarRubro(direccion) {
+        if (animando) return;
+
+        animando = true;
+
+        const nuevoRubro = modulo(
+            rubroActual + direccion,
+            rubros.length
+        );
+
+        const nombreAnterior = rubroNombre.textContent;
+        const nombreNuevo = rubros[nuevoRubro].nombre;
+
+        fotoStack.classList.add(
+            direccion > 0 ? "salida-izquierda" : "salida-derecha"
+        );
+
+        rubroNombre.classList.add("rubro-saliendo");
+
+        await precargarImagenes(rubros[nuevoRubro].fotos);
+
+        window.setTimeout(() => {
+            rubroActual = nuevoRubro;
+            fotoActual = 0;
+
+            rubroNombre.textContent = nombreNuevo;
+
+            crearGaleria();
+
+            fotoStack.classList.remove(
+                "salida-izquierda",
+                "salida-derecha"
+            );
+
+            fotoStack.classList.add(
+                direccion > 0 ? "entrada-derecha" : "entrada-izquierda"
+            );
+
+            rubroNombre.classList.remove("rubro-saliendo");
+            rubroNombre.classList.add("rubro-entrando");
+
+            requestAnimationFrame(() => {
+                requestAnimationFrame(() => {
+                    fotoStack.classList.remove(
+                        "entrada-derecha",
+                        "entrada-izquierda"
+                    );
+
+                    rubroNombre.classList.remove("rubro-entrando");
+                });
+            });
+
+            window.setTimeout(() => {
+                animando = false;
+            }, 650);
+        }, 280);
     }
+
     function abrirModal() {
         if (!galeriaModal || !modalImg) return;
 
-        modalImg.src = rubros[rubroActual].fotos[fotoActual];
+        modalImg.src = obtenerFotosActuales()[fotoActual];
+        modalImg.alt =
+            `${rubros[rubroActual].nombre}, fotografía ${fotoActual + 1}`;
+
         galeriaModal.classList.add("active");
-        document.body.style.overflow = "hidden";
+        galeriaModal.setAttribute("aria-hidden", "false");
+        document.body.classList.add("modal-abierto");
     }
 
     function cerrarModal() {
         if (!galeriaModal) return;
 
         galeriaModal.classList.remove("active");
-        document.body.style.overflow = "";
+        galeriaModal.setAttribute("aria-hidden", "true");
+        document.body.classList.remove("modal-abierto");
     }
 
     function actualizarModal() {
-        if (!galeriaModal?.classList.contains("active")) return;
+        if (
+            !galeriaModal?.classList.contains("active") ||
+            !modalImg
+        ) {
+            return;
+        }
 
-        modalImg.src = rubros[rubroActual].fotos[fotoActual];
+        modalImg.classList.add("cambiando");
+
+        window.setTimeout(() => {
+            modalImg.src = obtenerFotosActuales()[fotoActual];
+            modalImg.alt =
+                `${rubros[rubroActual].nombre}, fotografía ${fotoActual + 1}`;
+
+            modalImg.classList.remove("cambiando");
+        }, 180);
     }
 
-    prevRubro?.addEventListener("click", () => cambiarRubro(-1));
-    nextRubro?.addEventListener("click", () => cambiarRubro(1));
-    prevFoto?.addEventListener("click", () => cambiarFoto(-1));
-    nextFoto?.addEventListener("click", () => cambiarFoto(1));
+    function activarBotonTemporal(boton) {
+        if (!boton) return;
+
+        boton.classList.add("presionado");
+
+        window.setTimeout(() => {
+            boton.classList.remove("presionado");
+        }, 220);
+    }
+
+    prevRubro?.addEventListener("click", () => {
+        activarBotonTemporal(prevRubro);
+        cambiarRubro(-1);
+    });
+
+    nextRubro?.addEventListener("click", () => {
+        activarBotonTemporal(nextRubro);
+        cambiarRubro(1);
+    });
+
+    prevFoto?.addEventListener("click", () => {
+        activarBotonTemporal(prevFoto);
+        cambiarFoto(-1);
+    });
+
+    nextFoto?.addEventListener("click", () => {
+        activarBotonTemporal(nextFoto);
+        cambiarFoto(1);
+    });
 
     modalClose?.addEventListener("click", cerrarModal);
-    modalPrev?.addEventListener("click", () => cambiarFoto(-1));
-    modalNext?.addEventListener("click", () => cambiarFoto(1));
 
-    galeriaModal?.addEventListener("click", (e) => {
-        if (e.target === galeriaModal) cerrarModal();
+    modalPrev?.addEventListener("click", () => {
+        activarBotonTemporal(modalPrev);
+        cambiarFoto(-1);
     });
 
-    document.addEventListener("keydown", (e) => {
-        if (!galeriaModal?.classList.contains("active")) return;
-
-        if (e.key === "Escape") cerrarModal();
-        if (e.key === "ArrowLeft") cambiarFoto(-1);
-        if (e.key === "ArrowRight") cambiarFoto(1);
+    modalNext?.addEventListener("click", () => {
+        activarBotonTemporal(modalNext);
+        cambiarFoto(1);
     });
 
-    renderGaleria(); // 🔥 esto ahora carga las fotos apenas abre la página
+    galeriaModal?.addEventListener("click", event => {
+        if (event.target === galeriaModal) {
+            cerrarModal();
+        }
+    });
+
+    document.addEventListener("keydown", event => {
+        const modalActivo =
+            galeriaModal?.classList.contains("active");
+
+        if (event.key === "Escape" && modalActivo) {
+            cerrarModal();
+        }
+
+        if (event.key === "ArrowLeft") {
+            cambiarFoto(-1);
+        }
+
+        if (event.key === "ArrowRight") {
+            cambiarFoto(1);
+        }
+    });
+
+    crearGaleria();
 });

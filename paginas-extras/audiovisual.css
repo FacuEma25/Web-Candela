@@ -452,7 +452,7 @@ body::before {
     text-decoration: none;
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.15);
-    backdrop-filter: blur(8px);
+    /* backdrop-filter: blur(8px); */
     transition: all 0.3s ease;
 }
 
@@ -529,7 +529,7 @@ body::before {
     background: rgba(255, 255, 255, 0.08);
     color: #fff;
     cursor: pointer;
-    backdrop-filter: blur(8px);
+    /* backdrop-filter: blur(8px); */
     transition: all 0.3s ease;
 }
 
@@ -567,70 +567,266 @@ body::before {
 
 .gallery-img {
     position: absolute;
+
     width: 350px;
     height: 450px;
+
     object-fit: cover;
     border-radius: 18px;
     border: 6px solid rgba(255, 255, 255, 0.92);
-    box-shadow: 0 25px 60px rgba(0, 0, 0, 0.35);
-    cursor: pointer;
-    transition: all 0.45s ease;
 
-    position: absolute;
+    cursor: pointer;
+    user-select: none;
+
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.78);
+
+    box-shadow:
+        0 24px 60px rgba(0, 0, 0, 0.38);
 
     transition:
-        transform 0.6s cubic-bezier(.22, 1, .36, 1),
-        opacity 0.5s ease,
-        filter 0.5s ease;
+        transform 650ms cubic-bezier(0.22, 1, 0.36, 1),
+        opacity 450ms ease,
+        filter 500ms ease,
+        box-shadow 500ms ease;
 
-    will-change: transform, opacity;
+    will-change: transform, opacity, filter;
+    backface-visibility: hidden;
+    transform-origin: center;
 }
 
 .gallery-img.active {
-    transform: translateX(0) scale(1);
-    opacity: 1;
-    z-index: 3;
-    filter: blur(0);
-    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.6);
+    z-index: 4;
 
+    opacity: 1;
+    filter: blur(0) brightness(1);
+
+    transform:
+        translate3d(0, 0, 60px) scale(1);
+
+    box-shadow:
+        0 30px 80px rgba(0, 0, 0, 0.56),
+        0 0 35px rgba(14, 95, 244, 0.08);
 }
 
 .gallery-img.prev {
-    transform: translateX(-140px) scale(0.85);
-    opacity: 0.6;
     z-index: 2;
-    filter: blur(2px);
+
+    opacity: 0.54;
+    filter: blur(2px) brightness(0.72);
+
+    transform:
+        translate3d(-155px, 0, -40px) rotateY(5deg) scale(0.84);
 }
 
 .gallery-img.next {
-    transform: translateX(140px) scale(0.85);
-    opacity: 0.6;
     z-index: 2;
-    filter: blur(2px);
+
+    opacity: 0.54;
+    filter: blur(2px) brightness(0.72);
+
+    transform:
+        translate3d(155px, 0, -40px) rotateY(-5deg) scale(0.84);
 }
 
-.gallery-img.hidden {
-    transform: translateX(0) scale(0.7);
-    opacity: 0;
+.gallery-img.hidden-left {
     z-index: 1;
+
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(5px) brightness(0.55);
+
+    transform:
+        translate3d(-245px, 0, -100px) scale(0.68);
+}
+
+.gallery-img.hidden-right {
+    z-index: 1;
+
+    opacity: 0;
+    pointer-events: none;
+    filter: blur(5px) brightness(0.55);
+
+    transform:
+        translate3d(245px, 0, -100px) scale(0.68);
+}
+
+.foto-stack.sin-transicion .gallery-img {
+    transition: none !important;
+}
+
+.foto-stack {
+    transition:
+        opacity 280ms ease,
+        transform 420ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 280ms ease;
+}
+
+.foto-stack.salida-izquierda {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translate3d(-55px, 0, 0) scale(0.96);
+}
+
+.foto-stack.salida-derecha {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translate3d(55px, 0, 0) scale(0.96);
+}
+
+.foto-stack.entrada-derecha {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translate3d(55px, 0, 0) scale(0.96);
+}
+
+.foto-stack.entrada-izquierda {
+    opacity: 0;
+    filter: blur(6px);
+    transform: translate3d(-55px, 0, 0) scale(0.96);
+}
+
+#rubroNombre {
+    display: inline-block;
+
+    transition:
+        opacity 250ms ease,
+        transform 350ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 250ms ease;
+}
+
+#rubroNombre.rubro-saliendo {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(-8px);
+}
+
+#rubroNombre.rubro-entrando {
+    opacity: 0;
+    filter: blur(4px);
+    transform: translateY(8px);
 }
 
 .foto-btn {
     position: absolute;
+    top: 50%;
     z-index: 10;
+
     width: 52px;
     height: 52px;
+
+    display: grid;
+    place-items: center;
+
+    padding: 0;
+
+    border: 1px solid rgba(255, 255, 255, 0.18);
     border-radius: 50%;
+
+    background: rgba(255, 255, 255, 0.08);
+    color: #ffffff;
+
+    font-size: 1.4rem;
+    line-height: 1;
+
+    cursor: pointer;
+    outline: none;
+
+    transform: translateY(-50%);
+
+    transition:
+        transform 220ms cubic-bezier(0.22, 1, 0.36, 1),
+        background-color 220ms ease,
+        border-color 220ms ease,
+        box-shadow 220ms ease;
+
+    -webkit-tap-highlight-color: transparent;
 }
 
+/* Posición lateral */
+
 .prev-foto {
-    left: 8%;
+    left: clamp(20px, 8vw, 180px);
 }
 
 .next-foto {
-    right: 8%;
+    right: clamp(20px, 8vw, 180px);
 }
 
+/* Hover */
+
+.foto-btn:hover {
+    background: rgba(14, 95, 244, 0.22);
+    border-color: rgba(70, 140, 255, 0.65);
+
+    box-shadow:
+        0 10px 28px rgba(0, 0, 0, 0.22),
+        0 0 24px rgba(14, 95, 244, 0.2);
+
+    transform:
+        translateY(-50%) scale(1.06);
+}
+
+/* Click */
+
+.foto-btn:active,
+.foto-btn.presionado {
+    background: rgba(14, 95, 244, 0.32);
+    border-color: rgba(100, 165, 255, 0.75);
+
+    transform:
+        translateY(-50%) scale(0.92);
+}
+
+/* Navegación con teclado */
+
+.foto-btn:focus-visible {
+    outline: 3px solid rgba(75, 145, 255, 0.42);
+    outline-offset: 4px;
+}
+
+.galeria-modal {
+    display: flex;
+
+    visibility: hidden;
+    opacity: 0;
+    pointer-events: none;
+
+    transition:
+        opacity 300ms ease,
+        visibility 300ms ease;
+}
+
+.galeria-modal.active {
+    visibility: visible;
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.galeria-modal img {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+
+    transition:
+        opacity 220ms ease,
+        transform 400ms cubic-bezier(0.22, 1, 0.36, 1),
+        filter 220ms ease;
+}
+
+.galeria-modal:not(.active) img {
+    opacity: 0;
+    transform: translateY(18px) scale(0.96);
+}
+
+.galeria-modal img.cambiando {
+    opacity: 0;
+    filter: blur(5px);
+    transform: scale(0.975);
+}
+
+body.modal-abierto {
+    overflow: hidden;
+}
 
 /* INVERSIÓN */
 .inversion-card {
@@ -640,7 +836,7 @@ body::before {
     border-radius: 32px;
     background: rgba(255, 255, 255, 0.055);
     border: 1px solid rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(14px);
+    /* backdrop-filter: blur(14px); */
     text-align: center;
     border: 1px solid var(--cuarto);
 }
@@ -1150,6 +1346,57 @@ body {
     }
 
 
+    .galeria-slider {
+        min-height: 430px;
+    }
+
+    .foto-stack {
+        width: 100%;
+        height: 410px;
+    }
+
+    .gallery-img {
+        width: min(72vw, 290px);
+        height: min(96vw, 390px);
+        border-width: 4px;
+        border-radius: 15px;
+    }
+
+    .gallery-img.prev {
+        transform:
+            translate3d(-72px, 0, -40px) rotateY(4deg) scale(0.82);
+    }
+
+    .gallery-img.next {
+        transform:
+            translate3d(72px, 0, -40px) rotateY(-4deg) scale(0.82);
+    }
+
+    .gallery-img.hidden-left {
+        transform:
+            translate3d(-140px, 0, -80px) scale(0.68);
+    }
+
+    .gallery-img.hidden-right {
+        transform:
+            translate3d(140px, 0, -80px) scale(0.68);
+    }
+
+    .foto-btn {
+        width: 46px;
+        height: 46px;
+        font-size: 1.2rem;
+    }
+
+    .prev-foto {
+        left: 12px;
+    }
+
+    .next-foto {
+        right: 12px;
+    }
+
+
 
     .footer {
         padding: 70px 24px 26px;
@@ -1233,8 +1480,17 @@ body {
     }
 
     .foto-btn {
-        width: 44px;
-        height: 44px;
+        width: 42px;
+        height: 42px;
+        font-size: 1.1rem;
+    }
+
+    .prev-foto {
+        left: 8px;
+    }
+
+    .next-foto {
+        right: 8px;
     }
 
     .precio-box h3 {
@@ -1243,6 +1499,35 @@ body {
 
     .evento-btn {
         width: 100%;
+    }
+
+    .galeria-rubro-header {
+        gap: 14px;
+    }
+
+    .galeria-rubro-header h2 {
+        font-size: clamp(1.35rem, 7vw, 1.75rem);
+    }
+
+    .rubro-btn {
+        width: 42px;
+        height: 42px;
+        flex: 0 0 42px;
+    }
+
+    .gallery-img {
+        width: min(70vw, 265px);
+        height: min(96vw, 365px);
+    }
+
+    .gallery-img.prev {
+        transform:
+            translate3d(-48px, 0, -40px) scale(0.80);
+    }
+
+    .gallery-img.next {
+        transform:
+            translate3d(48px, 0, -40px) scale(0.80);
     }
 
 
@@ -1269,3 +1554,19 @@ body {
 }
 
 @media (max-width: 360px) {}
+
+@media (prefers-reduced-motion: reduce) {
+
+    .gallery-img,
+    .foto-stack,
+    #rubroNombre,
+    .rubro-btn,
+    .foto-btn,
+    .modal-arrow,
+    .modal-close,
+    .galeria-modal,
+    .galeria-modal img {
+        transition-duration: 0.01ms !important;
+        animation-duration: 0.01ms !important;
+    }
+}

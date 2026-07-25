@@ -1135,7 +1135,7 @@ body::before {
     color: rgba(255, 255, 255, 0.84);
 }
 
-.forma-list li::before {
+.forma-list .item-list-1::before {
     content: "";
     position: absolute;
     left: 0;
@@ -1144,6 +1144,34 @@ body::before {
     height: 11px;
     border-radius: 50%;
     background: #0e5ff4;
+    box-shadow: 0 0 18px rgba(14, 95, 244, 0.45);
+}
+
+.sub-list{
+    margin-top: 12px;
+    margin-left: 38px;   /* regula la separación */
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.sub-list li{
+    padding-left: 24px;
+}
+
+.sub-list li::before{
+    left: 0;
+}
+
+.sub-list li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 11px;
+    width: 11px;
+    height: 11px;
+    border-radius: 50%;
+    background: #75a1f5;
     box-shadow: 0 0 18px rgba(14, 95, 244, 0.45);
 }
 
@@ -1229,7 +1257,6 @@ body::before {
     border-radius: 34px;
     background: linear-gradient(180deg, rgba(255, 255, 255, 0.055) 0%, rgba(255, 255, 255, 0.02) 100%);
     border: 1px solid rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(12px);
     -webkit-backdrop-filter: blur(12px);
     position: relative;
     overflow: hidden;

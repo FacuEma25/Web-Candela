@@ -413,7 +413,7 @@ body {
     filter: blur(130px);
     pointer-events: none;
 }
-
+/* 
 .marca-resultados::before {
     content: "";
     position: absolute;
@@ -426,7 +426,7 @@ body {
     transform: translate(-50%, -50%);
 
     background: radial-gradient(
-        circle at 35% 35%, /* 👈 clave */
+        circle at 35% 35%,
         rgba(14, 94, 244, 0.548) 0%,
         rgba(14, 94, 244, 0.356) 35%,
         rgba(14, 94, 244, 0.308) 55%,
@@ -436,6 +436,7 @@ body {
     filter: blur(140px);
     z-index: 0;
 }
+*/
 
 .marca-resultados::after {
     content: "";
@@ -523,7 +524,7 @@ body {
     line-height: 1.5;
     background: rgba(255, 255, 255, 0.06);
     border: 1px solid rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(12px);
+    /* backdrop-filter: blur(12px); */
     cursor: pointer;
     transition: all 0.3s ease;
 }
@@ -579,7 +580,7 @@ body {
     border-radius: 32px;
     background: rgba(255, 255, 255, 0.055);
     border: 1px solid rgba(255, 255, 255, 0.10);
-    backdrop-filter: blur(14px);
+    /* backdrop-filter: blur(14px); */
 }
 
 .marca-price {
