@@ -99,3 +99,7 @@
         transition: none;
     }
 }
+
+.reveal {
+    opacity: 1 !important;
+}
