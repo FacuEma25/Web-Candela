@@ -1567,6 +1567,10 @@ body {
 }
 
 @media (max-width: 768px) {
+    .planes-tabla-section{
+        display: none;
+    }
+
     .menu label {
         display: block;
     }
@@ -1737,7 +1741,13 @@ body {
         height: 200px;
     }
 
+    .planes-mobile{
+        margin: 50px 0 0 0;
+    }
 
+    .plan-mobile-card{
+        margin: 20px;
+    }
 
 
 
