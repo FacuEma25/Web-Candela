@@ -21,30 +21,32 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener("DOMContentLoaded", () => {
     const rubros = [
         {
-            nombre: "Moda",
+            nombre: "Vita Pilates",
             fotos: [
-                "img/Moda (1).png",
-                "img/Moda (2).png",
-                "img/Moda (3).png",
-                "img/Moda (4).png"
+                "img/Vita (1).webp",
+                "img/Vita (2).webp",
+                "img/Vita (3).webp",
+                "img/Vita (4).webp",
+                "img/Vita (5).webp"
             ]
         },
         {
-            nombre: "Joyas",
+            nombre: "Las carmencitas té",
             fotos: [
-                "img/Joyas (1).png",
-                "img/Joyas (2).png",
-                "img/Joyas (3).png",
-                "img/Joyas (4).png"
+                "img/LC Te (1).webp",
+                "img/LC Te (2).webp",
+                "img/LC Te (3).webp",
+                "img/LC Te (4).webp",
+                "img/LC Te (5).webp"
             ]
         },
         {
-            nombre: "Tecnología",
+            nombre: "SL Joyas",
             fotos: [
-                "img/Tecnologia (1).png",
-                "img/Tecnologia (2).png",
-                "img/Tecnologia (3).png",
-                "img/Tecnologia (4).png"
+                "img/SL Joyas (1).webp",
+                "img/SL Joyas (2).webp",
+                "img/SL Joyas (3).webp",
+                "img/SL Joyas (4).webp"
             ]
         }
     ];
