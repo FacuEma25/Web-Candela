@@ -152,7 +152,7 @@ body::before {
 
     background: rgba(5, 40, 104, 0.6);
     backdrop-filter: blur(12px);
-    -webkit-backdrop-filter: blur(12px);
+    /* -webkit-backdrop-filter: blur(12px); */
 
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
 }
@@ -322,8 +322,8 @@ body::before {
     color: var(--claro);
     background: rgba(255, 255, 255, 0.08);
     border: 1px solid rgba(255, 255, 255, 0.14);
-    backdrop-filter: blur(8px);
-    -webkit-backdrop-filter: blur(8px);
+    /* backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px); */
     transition: 0.3s ease;
 }
 

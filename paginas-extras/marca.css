@@ -916,7 +916,7 @@ img {
 .footer-bottom {
     position: relative;
     z-index: 2;
-    max-width: 1080px;
+    /* max-width: 1080px; */
     margin: 0 auto;
 }
 
@@ -975,12 +975,12 @@ img {
     font-size: 0.95rem;
 }
 
-.footer-top {
+/* .footer-top {
     text-align: center;
     padding-bottom: 45px;
     margin-bottom: 28px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.08);
-}
+} */
 
 /* RESPONSIVE */
 
