@@ -239,15 +239,6 @@ body {
     text-shadow: 0 0 28px rgba(120, 185, 255, 0.12);
 }
 
-/* .base-hero-text p {
-    max-width: 600px;
-    margin: 0 auto 32px;
-
-    font-size: 1rem;
-    line-height: 1.65;
-    color: rgba(244, 247, 240, 0.72);
-} */
-
 .marca-hero {
     font-size: 1.15rem;
     line-height: 1.8;
@@ -413,30 +404,6 @@ body {
     filter: blur(130px);
     pointer-events: none;
 }
-/* 
-.marca-resultados::before {
-    content: "";
-    position: absolute;
-
-    width: 900px;
-    height: 900px;
-
-    top: 25%;
-    left: 30%;
-    transform: translate(-50%, -50%);
-
-    background: radial-gradient(
-        circle at 35% 35%,
-        rgba(14, 94, 244, 0.548) 0%,
-        rgba(14, 94, 244, 0.356) 35%,
-        rgba(14, 94, 244, 0.308) 55%,
-        transparent 75%
-    );
-
-    filter: blur(140px);
-    z-index: 0;
-}
-*/
 
 .marca-resultados::after {
     content: "";
@@ -705,17 +672,6 @@ body {
         transform: translateY(0);
     }
 }
-
-
-
-
-
-
-
-
-
-
-
 
 
 /* FOOTER */
@@ -1013,14 +969,6 @@ body {
         height: 90vw;
         filter: blur(90px);
     }
-
-
-
-
-
-
-
-
 
     .footer {
         padding: 70px 24px 26px;

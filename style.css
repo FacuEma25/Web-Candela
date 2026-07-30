@@ -129,18 +129,6 @@ body {
     background-color: var(--oscuro);
 }
 
-/* .inicio,
-.exp-items,
-.candela,
-.companias-2,
-.servicios,
-.opiniones,
-.contact {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-} */
-
 .inicio::before {
     animation: heroGlow 10s ease-in-out infinite alternate;
 }
@@ -275,12 +263,6 @@ img {
 .text-header {
     width: 50%;
 }
-
-/* .text-header h1 {
-    font-size: 3.2rem;
-    color: #f0f0e7;
-    margin-bottom: 15px;
-} */
 
 .text-tittle {
     color: rgba(255, 255, 255, 0.85);
@@ -1057,13 +1039,6 @@ img {
         transform 0.3s ease;
 }
 
-/* .servicios .btn-card:hover {
-    background: rgba(14, 95, 244, 0.18);
-    border-color: rgba(14, 95, 244, 0.55);
-    box-shadow: 0 0 12px rgba(14, 95, 244, 0.12);
-    transform: none;
-} */
-
 .btn-card:hover {
     border-color: var(--cuarto);
 }
@@ -1753,20 +1728,15 @@ img {
 }
 
 /* Tarjeta contenedora de los iconos (Estilo vidrio azul como tu web) */
-/* --- ESTILO DE LOS ICONOS CON DIFUMINADO INTENSO --- */
-/* --- TAMAÑO DE ICONOS AGRANDADO (ESCRITORIO) --- */
 .icon-card {
     position: absolute;
 
-    /* 1. Agrandamos el contenedor de los iconos */
     width: 90px;
     height: 90px;
 
-    /* 2. El desfase DEBE ser la mitad exacta (negativa) del tamaño para que no se descentren al orbitar */
     left: -45px;
     top: -45px;
 
-    /* 3. Agrandamos el logo de adentro (FontAwesome) para que acompañe el tamaño */
     font-size: 34px;
 
     /* Mantenemos tu súper difuminado intenso y tus estilos visuales */
@@ -1785,11 +1755,6 @@ img {
     animation: counterRotation 10s linear infinite;
     animation-delay: var(--delay);
 }
-
-/* .icon-card i {
-  width: 60px;
-  height: 60px;
-} */
 
 /* --- ANIMACIONES --- */
 @keyframes orbitRotation {
@@ -1814,10 +1779,6 @@ img {
 
 /* =========================
    SCROLL REVEAL - INDEX
-========================= */
-
-/* =========================
-   SCROLL REVEAL
 ========================= */
 
 .reveal {
@@ -1891,15 +1852,6 @@ img {
         transform: translateY(0);
     }
 }
-
-/* Respeta usuarios que tienen animaciones reducidas */
-/* @media (prefers-reduced-motion: reduce) {
-    .reveal {
-        opacity: 1;
-        transform: none;
-        transition: none;
-    }
-} */
 
 
 /* --- AJUSTES EXCLUSIVOS PARA DISPOSITIVOS MÓVILES --- */
