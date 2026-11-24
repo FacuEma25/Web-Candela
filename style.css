@@ -761,7 +761,7 @@ img {
 }
 
 .logo-card:nth-child(5) {
-    --logo-scale: 0.6;
+    --logo-scale: 1;
 }
 
 .logo-card:nth-child(6) {
@@ -778,6 +778,10 @@ img {
 
 .logo-card:nth-child(9) {
     --logo-scale: 0.6;
+}
+
+.logo-card:nth-child(10) {
+    display: none;
 }
 
 .logo-rubro {
@@ -2449,6 +2453,10 @@ img {
 
     .logo-card:nth-child(9) {
         --logo-scale: 0.8;
+    }
+
+    .logo-card:nth-child(10) {
+        display: block;
     }
 
 }
